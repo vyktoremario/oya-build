@@ -1,3 +1,5 @@
+<p><img src="apps/web/public/brand/logo.svg" alt="Oya Build" height="48"></p>
+
 # Oya Build
 
 **Sketch a house. Walk through it. Price it in Naira.**
@@ -148,6 +150,12 @@ docs                spec and ADRs
 TypeScript (strict) · pnpm workspace · Next.js 16 on Vercel · react-three-fiber + drei · Zustand ·
 Zod · Claude (vision, structured outputs) via the Anthropic SDK · Upstash Redis · Vitest · Playwright ·
 GitHub Actions.
+
+## Brand
+
+The logo is a floor plan under a roof: the product in one drawing. Files are in
+[`apps/web/public/brand`](apps/web/public/brand) (`logo.svg` / `logo-on-dark.svg` lockups, `logo-mark.svg`,
+`icon.svg` app tile, `og.png`), regenerated with `pnpm --filter web brand <url-of-a-running-build>`.
 
 ## Licence
 

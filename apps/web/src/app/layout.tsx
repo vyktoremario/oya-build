@@ -13,6 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://oya-build.vercel.app"),
+  applicationName: "Oya Build",
+  openGraph: { siteName: "Oya Build", type: "website" },
+  twitter: { card: "summary_large_image" },
   title: "Oya Build: floor plan to 3D and a Naira estimate",
   description: "Photograph a floor plan, walk through it in 3D, and get a bill of quantities in Naira. Move a wall and watch both update.",
 };

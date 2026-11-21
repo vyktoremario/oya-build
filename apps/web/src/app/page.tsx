@@ -15,9 +15,9 @@ export default function Home() {
   return (
     <div className="min-h-dvh bg-[var(--paper)] text-[var(--ink)]">
       <header className="mx-auto flex max-w-6xl items-center justify-between px-4 py-4 sm:px-6">
-        <span className="font-semibold tracking-tight">
-          Oya<span className="text-[var(--accent)]">Build</span>
-        </span>
+        <Link href="/" aria-label="Oya Build home">
+          <Image src="/brand/logo.svg" alt="Oya Build" width={122} height={32} priority />
+        </Link>
         <a href="https://github.com/vyktoremario/oya-build" className="text-sm text-[var(--muted)] hover:text-[var(--ink)]">
           GitHub
         </a>
