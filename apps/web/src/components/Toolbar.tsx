@@ -39,8 +39,12 @@ export function Toolbar({ onNew }: { onNew: () => void }) {
 
   return (
     <header className="flex flex-wrap items-center gap-x-3 gap-y-2 border-b border-[var(--line)] bg-white px-3 py-2">
-      <Link href="/" className="font-semibold tracking-tight text-[var(--ink)]">
-        Oya<span className="text-[var(--accent)]">Build</span>
+      <Link href="/" className="flex items-center gap-1.5 font-semibold tracking-tight text-[var(--ink)]" aria-label="Oya Build home">
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img src="/brand/logo-mark.svg" alt="" width={22} height={22} />
+        <span>
+          Oya<span className="text-[var(--accent)]">Build</span>
+        </span>
       </Link>
       <span className="hidden max-w-[16rem] truncate text-sm text-[var(--muted)] md:inline">{name}</span>
       <div className="flex flex-wrap items-center gap-1" role="toolbar" aria-label="Plan tools">
