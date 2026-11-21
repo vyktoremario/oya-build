@@ -1,0 +1,22 @@
+{
+  "name": "oya-build",
+  "private": true,
+  "packageManager": "pnpm@10.14.0",
+  "engines": { "node": ">=22" },
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "typecheck": "pnpm -r --parallel typecheck",
+    "lint": "pnpm --filter web lint",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "eval": "pnpm --filter eval run eval",
+    "eval:live": "pnpm --filter eval run eval -- --live",
+    "eval:report": "pnpm --filter eval run report"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0",
+    "@types/node": "^22"
+  }
+}
