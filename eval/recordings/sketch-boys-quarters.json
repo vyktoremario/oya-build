@@ -1,0 +1,194 @@
+{
+ "raw": {
+  "imageWidth": 1240,
+  "imageHeight": 930,
+  "drawingType": "hand_sketch",
+  "walls": [
+   {
+    "x1": 136,
+    "y1": 294,
+    "x2": 1104,
+    "y2": 294,
+    "thicknessPx": 20,
+    "kind": "external",
+    "confidence": 0.9
+   },
+   {
+    "x1": 136,
+    "y1": 636,
+    "x2": 1104,
+    "y2": 636,
+    "thicknessPx": 20,
+    "kind": "external",
+    "confidence": 0.9
+   },
+   {
+    "x1": 136,
+    "y1": 294,
+    "x2": 136,
+    "y2": 636,
+    "thicknessPx": 20,
+    "kind": "external",
+    "confidence": 0.9
+   },
+   {
+    "x1": 1104,
+    "y1": 294,
+    "x2": 1104,
+    "y2": 636,
+    "thicknessPx": 19,
+    "kind": "external",
+    "confidence": 0.9
+   },
+   {
+    "x1": 506,
+    "y1": 294,
+    "x2": 506,
+    "y2": 636,
+    "thicknessPx": 14,
+    "kind": "internal",
+    "confidence": 0.88
+   },
+   {
+    "x1": 735,
+    "y1": 294,
+    "x2": 735,
+    "y2": 636,
+    "thicknessPx": 13,
+    "kind": "internal",
+    "confidence": 0.88
+   }
+  ],
+  "openings": [
+   {
+    "kind": "window",
+    "x": 324,
+    "y": 294,
+    "widthPx": 104,
+    "confidence": 0.85
+   },
+   {
+    "kind": "window",
+    "x": 621,
+    "y": 294,
+    "widthPx": 52,
+    "confidence": 0.8
+   },
+   {
+    "kind": "window",
+    "x": 917,
+    "y": 294,
+    "widthPx": 105,
+    "confidence": 0.85
+   },
+   {
+    "kind": "door",
+    "x": 321,
+    "y": 636,
+    "widthPx": 80,
+    "confidence": 0.88
+   },
+   {
+    "kind": "door",
+    "x": 621,
+    "y": 636,
+    "widthPx": 67,
+    "confidence": 0.85
+   },
+   {
+    "kind": "door",
+    "x": 920,
+    "y": 636,
+    "widthPx": 81,
+    "confidence": 0.88
+   }
+  ],
+  "rooms": [
+   {
+    "name": "Room 1",
+    "x": 321,
+    "y": 463,
+    "confidence": 0.92
+   },
+   {
+    "name": "Toilet",
+    "x": 624,
+    "y": 459,
+    "confidence": 0.92
+   },
+   {
+    "name": "Room 2",
+    "x": 924,
+    "y": 461,
+    "confidence": 0.92
+   }
+  ],
+  "dimensions": [
+   {
+    "text": "10.2m",
+    "valueMm": 10200,
+    "x1": 130,
+    "y1": 199,
+    "x2": 1110,
+    "y2": 199,
+    "confidence": 0.85
+   },
+   {
+    "text": "3.9m",
+    "valueMm": 3900,
+    "x1": 130,
+    "y1": 247,
+    "x2": 512,
+    "y2": 247,
+    "confidence": 0.82
+   },
+   {
+    "text": "2.4m",
+    "valueMm": 2400,
+    "x1": 512,
+    "y1": 247,
+    "x2": 740,
+    "y2": 247,
+    "confidence": 0.82
+   },
+   {
+    "text": "3.9m",
+    "valueMm": 3900,
+    "x1": 740,
+    "y1": 247,
+    "x2": 1110,
+    "y2": 247,
+    "confidence": 0.82
+   },
+   {
+    "text": "3.6m",
+    "valueMm": 3600,
+    "x1": 40,
+    "y1": 290,
+    "x2": 40,
+    "y2": 636,
+    "confidence": 0.75
+   },
+   {
+    "text": "3.6m",
+    "valueMm": 3600,
+    "x1": 90,
+    "y1": 287,
+    "x2": 90,
+    "y2": 636,
+    "confidence": 0.75
+   }
+  ],
+  "notes": [
+   "Two separate 3.6m vertical dimensions drawn on the left side, both spanning the building depth."
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5 (prompt 2026-11-21.1)",
+  "inputTokens": 3969,
+  "outputTokens": 1450,
+  "costUsd": 0.044876,
+  "latencyMs": 13470,
+  "at": "2026-11-21T12:04:09.676Z"
+ }
+}

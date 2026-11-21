@@ -1,0 +1,192 @@
+{
+ "raw": {
+  "imageWidth": 1240,
+  "imageHeight": 930,
+  "drawingType": "printed_plan",
+  "walls": [
+   {
+    "x1": 136,
+    "y1": 294,
+    "x2": 1104,
+    "y2": 294,
+    "thicknessPx": 21,
+    "kind": "external",
+    "confidence": 0.95
+   },
+   {
+    "x1": 136,
+    "y1": 636,
+    "x2": 1104,
+    "y2": 636,
+    "thicknessPx": 21,
+    "kind": "external",
+    "confidence": 0.95
+   },
+   {
+    "x1": 136,
+    "y1": 294,
+    "x2": 136,
+    "y2": 636,
+    "thicknessPx": 21,
+    "kind": "external",
+    "confidence": 0.95
+   },
+   {
+    "x1": 1104,
+    "y1": 294,
+    "x2": 1104,
+    "y2": 636,
+    "thicknessPx": 21,
+    "kind": "external",
+    "confidence": 0.95
+   },
+   {
+    "x1": 506,
+    "y1": 294,
+    "x2": 506,
+    "y2": 636,
+    "thicknessPx": 14,
+    "kind": "internal",
+    "confidence": 0.9
+   },
+   {
+    "x1": 734,
+    "y1": 294,
+    "x2": 734,
+    "y2": 636,
+    "thicknessPx": 14,
+    "kind": "internal",
+    "confidence": 0.9
+   }
+  ],
+  "openings": [
+   {
+    "kind": "window",
+    "x": 321,
+    "y": 294,
+    "widthPx": 115,
+    "confidence": 0.9
+   },
+   {
+    "kind": "window",
+    "x": 620,
+    "y": 294,
+    "widthPx": 57,
+    "confidence": 0.9
+   },
+   {
+    "kind": "window",
+    "x": 919,
+    "y": 294,
+    "widthPx": 115,
+    "confidence": 0.9
+   },
+   {
+    "kind": "door",
+    "x": 321,
+    "y": 636,
+    "widthPx": 86,
+    "confidence": 0.9
+   },
+   {
+    "kind": "door",
+    "x": 620,
+    "y": 636,
+    "widthPx": 71,
+    "confidence": 0.9
+   },
+   {
+    "kind": "door",
+    "x": 919,
+    "y": 636,
+    "widthPx": 86,
+    "confidence": 0.9
+   }
+  ],
+  "rooms": [
+   {
+    "name": "Room 1",
+    "x": 321,
+    "y": 459,
+    "confidence": 0.95
+   },
+   {
+    "name": "Toilet",
+    "x": 620,
+    "y": 459,
+    "confidence": 0.95
+   },
+   {
+    "name": "Room 2",
+    "x": 919,
+    "y": 459,
+    "confidence": 0.95
+   }
+  ],
+  "dimensions": [
+   {
+    "text": "10200",
+    "valueMm": 10200,
+    "x1": 136,
+    "y1": 199,
+    "x2": 1104,
+    "y2": 199,
+    "confidence": 0.9
+   },
+   {
+    "text": "3900",
+    "valueMm": 3900,
+    "x1": 136,
+    "y1": 248,
+    "x2": 506,
+    "y2": 248,
+    "confidence": 0.9
+   },
+   {
+    "text": "2400",
+    "valueMm": 2400,
+    "x1": 506,
+    "y1": 248,
+    "x2": 734,
+    "y2": 248,
+    "confidence": 0.9
+   },
+   {
+    "text": "3900",
+    "valueMm": 3900,
+    "x1": 734,
+    "y1": 248,
+    "x2": 1104,
+    "y2": 248,
+    "confidence": 0.9
+   },
+   {
+    "text": "3600",
+    "valueMm": 3600,
+    "x1": 41,
+    "y1": 294,
+    "x2": 41,
+    "y2": 636,
+    "confidence": 0.85
+   },
+   {
+    "text": "3600",
+    "valueMm": 3600,
+    "x1": 91,
+    "y1": 294,
+    "x2": 91,
+    "y2": 636,
+    "confidence": 0.85
+   }
+  ],
+  "notes": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5 (prompt 2026-11-21.1)",
+  "inputTokens": 3969,
+  "outputTokens": 958,
+  "costUsd": 0.035036,
+  "latencyMs": 8572,
+  "at": "2026-11-21T12:02:03.653Z"
+ }
+}

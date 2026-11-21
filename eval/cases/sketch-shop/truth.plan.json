@@ -1,0 +1,295 @@
+{
+ "version": 1,
+ "name": "Shop with store and office 7.2 × 9.0 m",
+ "source": {
+  "kind": "sample",
+  "mmPerPx": null,
+  "originX": 0,
+  "originY": 0,
+  "imageWidth": 0,
+  "imageHeight": 0,
+  "scaleSource": "exact"
+ },
+ "params": {
+  "wallHeight": 3000,
+  "lintelLevel": 2100,
+  "lintelDepth": 225,
+  "lintelMainBars": 4,
+  "lintelMainBarDia": 12,
+  "lintelLinkDia": 8,
+  "lintelLinkSpacing": 200,
+  "concreteCover": 25,
+  "foundationWidth": 675,
+  "foundationDepth": 900,
+  "footingThickness": 225,
+  "plinthHeight": 450,
+  "coreFillFraction": 0.5,
+  "slabThickness": 150,
+  "screedThickness": 25,
+  "plasterThickness": 15,
+  "blockLength": 450,
+  "blockHeight": 225,
+  "mortarJoint": 10,
+  "mixFooting": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixLintel": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixSlab": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixCoreFill": {
+   "cement": 1,
+   "sand": 3,
+   "granite": 6
+  },
+  "mixMortar": {
+   "cement": 1,
+   "sand": 6,
+   "granite": 0
+  },
+  "mixPlaster": {
+   "cement": 1,
+   "sand": 6,
+   "granite": 0
+  },
+  "mixScreed": {
+   "cement": 1,
+   "sand": 3,
+   "granite": 0
+  },
+  "roofType": "hip",
+  "roofPitchDeg": 25,
+  "roofOverhang": 600,
+  "rafterSpacing": 600,
+  "purlinSpacing": 900,
+  "roofBracingAllowance": 0.3,
+  "waste": {
+   "blocks": 0.05,
+   "cement": 0.05,
+   "sand": 0.1,
+   "granite": 0.05,
+   "rebar": 0.1,
+   "roofing": 0.1,
+   "timber": 0.1,
+   "dpm": 0.15,
+   "fill": 0.25,
+   "ceiling": 0.05
+  },
+  "labourPercent": 0
+ },
+ "nodes": [
+  {
+   "id": "n_mwqbwnitg4ekgs",
+   "x": 0,
+   "y": 0
+  },
+  {
+   "id": "n_mwqbwnitg5h7sy",
+   "x": 7200,
+   "y": 0
+  },
+  {
+   "id": "n_mwqbwniug7xwou",
+   "x": 7200,
+   "y": 9000
+  },
+  {
+   "id": "n_mwqbwniug9br3h",
+   "x": 0,
+   "y": 9000
+  },
+  {
+   "id": "n_mwqbwniugc8e13",
+   "x": 0,
+   "y": 5400
+  },
+  {
+   "id": "n_mwqbwniuge1w6g",
+   "x": 7200,
+   "y": 5400
+  },
+  {
+   "id": "n_mwqbwniughguid",
+   "x": 3600,
+   "y": 5400
+  },
+  {
+   "id": "n_mwqbwniugj54by",
+   "x": 3600,
+   "y": 9000
+  }
+ ],
+ "walls": [
+  {
+   "id": "w_mwqbwnitg6m0gw",
+   "a": "n_mwqbwnitg4ekgs",
+   "b": "n_mwqbwnitg5h7sy",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwniug8czrq",
+   "a": "n_mwqbwnitg5h7sy",
+   "b": "n_mwqbwniuge1w6g",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwniugaoua5",
+   "a": "n_mwqbwniug7xwou",
+   "b": "n_mwqbwniugj54by",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwniugbryw7",
+   "a": "n_mwqbwniug9br3h",
+   "b": "n_mwqbwniugc8e13",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwniugdn5ij",
+   "a": "n_mwqbwniugc8e13",
+   "b": "n_mwqbwnitg4ekgs",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwniugfozos",
+   "a": "n_mwqbwniuge1w6g",
+   "b": "n_mwqbwniug7xwou",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwniugg9s2r",
+   "a": "n_mwqbwniugc8e13",
+   "b": "n_mwqbwniughguid",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwniugi0q0i",
+   "a": "n_mwqbwniughguid",
+   "b": "n_mwqbwniuge1w6g",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwniugki93u",
+   "a": "n_mwqbwniugj54by",
+   "b": "n_mwqbwniug9br3h",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwniugl5jpi",
+   "a": "n_mwqbwniughguid",
+   "b": "n_mwqbwniugj54by",
+   "kind": "internal",
+   "thickness": 150
+  }
+ ],
+ "openings": [
+  {
+   "id": "o_mwqbwniugmag6l",
+   "wallId": "w_mwqbwnitg6m0gw",
+   "kind": "door",
+   "offset": 3600,
+   "width": 1200,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-entrance-steel"
+  },
+  {
+   "id": "o_mwqbwniugnsakb",
+   "wallId": "w_mwqbwnitg6m0gw",
+   "kind": "window",
+   "offset": 1500,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  },
+  {
+   "id": "o_mwqbwniugon5dt",
+   "wallId": "w_mwqbwnitg6m0gw",
+   "kind": "window",
+   "offset": 5700,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  },
+  {
+   "id": "o_mwqbwniugp4q05",
+   "wallId": "w_mwqbwniugg9s2r",
+   "kind": "door",
+   "offset": 1800,
+   "width": 900,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-900"
+  },
+  {
+   "id": "o_mwqbwniugqodau",
+   "wallId": "w_mwqbwniugi0q0i",
+   "kind": "door",
+   "offset": 1800,
+   "width": 900,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-900"
+  },
+  {
+   "id": "o_mwqbwniugr72le",
+   "wallId": "w_mwqbwniugbryw7",
+   "kind": "window",
+   "offset": 1800,
+   "width": 600,
+   "height": 600,
+   "sill": 1500,
+   "specId": "window-casement-600"
+  },
+  {
+   "id": "o_mwqbwniugs7v28",
+   "wallId": "w_mwqbwniugfozos",
+   "kind": "window",
+   "offset": 1800,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  }
+ ],
+ "labels": [
+  {
+   "id": "l0",
+   "x": 3600,
+   "y": 2700,
+   "name": "Shop Floor"
+  },
+  {
+   "id": "l1",
+   "x": 1800,
+   "y": 7200,
+   "name": "Store"
+  },
+  {
+   "id": "l2",
+   "x": 5400,
+   "y": 7200,
+   "name": "Office"
+  }
+ ],
+ "priceOverrides": {}
+}

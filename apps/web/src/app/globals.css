@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+:root {
+  --paper: #f6f4ef;
+  --ink: #1c2430;
+  --ink-soft: #4b5563;
+  --muted: #6b7280;
+  --line: #e3e0d8;
+  --hover: #efece5;
+  --grid: #e6e2d9;
+  --room: rgba(28, 36, 48, 0.035);
+  --accent: #d9541a;
+  --money: #1e7a4c;
+  --sky: #3b82c4;
+  --warn: #d99a1a;
+  --warn-bg: #fdf4e3;
+  --warn-ink: #8a5a0b;
+}
+
+@theme inline {
+  --color-background: var(--paper);
+  --color-foreground: var(--ink);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+}
+
+@keyframes slide {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(300%); }
+}
+
+@media print {
+  body * { visibility: hidden; }
+  [data-print], [data-print] * { visibility: visible; }
+  [data-print] { position: absolute; inset: 0; height: auto; overflow: visible; }
+  [data-print] .overflow-y-auto { overflow: visible; }
+  [data-print] button { display: none; }
+}

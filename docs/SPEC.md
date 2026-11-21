@@ -123,14 +123,18 @@ Nothing in the README is a claimed number unless it came from `pnpm eval` and wa
 
 **Metrics** (per case, then aggregated by category, and reported with n so nobody over-reads them):
 - Scale error (% of true mm/px).
-- Wall precision / recall / F1: a predicted wall matches a true one if both endpoints are within
-  max(300 mm, 3% of the longest side) after alignment.
-- Opening F1 (with the right kind, on the matched wall, offset within 300 mm).
-- Room area error (% per matched room, and total floor area).
+- Wall precision / recall / F1, length-weighted: points every 100 mm along each centreline count as
+  found when within 300 mm of the other plan's walls. *(Changed during the build from endpoint
+  matching: walls split at different junctions in truth and extraction, so endpoint matching
+  penalised correct geometry.)*
+- Opening F1: same kind, centre within 500 mm, one-to-one greedy matching.
+- Total floor-area error and room counts.
 - **Estimate error**: |BoQ total(extracted, uncorrected) − BoQ total(truth)| / BoQ total(truth), plus
-  per-group error (blocks, cement, roof). This measures *extraction-induced* error with the same engine and prices.
-- **Correction effort**: number of editor operations needed to go from the extracted plan to the true one (approximated by a matching diff).
+  per-group error. This measures *extraction-induced* error with the same engine and prices.
 - Cost and latency per extraction (from `usage` and wall clock).
+- *Deferred to v2*: correction effort (editor operations needed to fix a plan).
+- As built, the real sketches are 3 drawings Victor supplied; they are scored locally and not committed
+  (`eval/cases-local/`, git-ignored) because the images may not be ours to redistribute.
 
 What we **don't** measure in v1, and say so: the error of the engine against a real QS-prepared BoQ
 or a real build cost. If you can get one real QS BoQ for a simple bungalow, it becomes case #1 of

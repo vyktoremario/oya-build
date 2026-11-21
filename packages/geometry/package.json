@@ -1,0 +1,9 @@
+{
+  "name": "@oya/geometry",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": { ".": "./src/index.ts" },
+  "scripts": { "typecheck": "tsc -p ." },
+  "dependencies": { "@oya/schema": "workspace:*" }
+}
