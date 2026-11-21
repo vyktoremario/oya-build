@@ -1,0 +1,285 @@
+{
+ "version": 1,
+ "name": "Boys' quarters 10.2 × 3.6 m",
+ "source": {
+  "kind": "sample",
+  "mmPerPx": null,
+  "originX": 0,
+  "originY": 0,
+  "imageWidth": 0,
+  "imageHeight": 0,
+  "scaleSource": "exact"
+ },
+ "params": {
+  "wallHeight": 3000,
+  "lintelLevel": 2100,
+  "lintelDepth": 225,
+  "lintelMainBars": 4,
+  "lintelMainBarDia": 12,
+  "lintelLinkDia": 8,
+  "lintelLinkSpacing": 200,
+  "concreteCover": 25,
+  "foundationWidth": 675,
+  "foundationDepth": 900,
+  "footingThickness": 225,
+  "plinthHeight": 450,
+  "coreFillFraction": 0.5,
+  "slabThickness": 150,
+  "screedThickness": 25,
+  "plasterThickness": 15,
+  "blockLength": 450,
+  "blockHeight": 225,
+  "mortarJoint": 10,
+  "mixFooting": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixLintel": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixSlab": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixCoreFill": {
+   "cement": 1,
+   "sand": 3,
+   "granite": 6
+  },
+  "mixMortar": {
+   "cement": 1,
+   "sand": 6,
+   "granite": 0
+  },
+  "mixPlaster": {
+   "cement": 1,
+   "sand": 6,
+   "granite": 0
+  },
+  "mixScreed": {
+   "cement": 1,
+   "sand": 3,
+   "granite": 0
+  },
+  "roofType": "hip",
+  "roofPitchDeg": 25,
+  "roofOverhang": 600,
+  "rafterSpacing": 600,
+  "purlinSpacing": 900,
+  "roofBracingAllowance": 0.3,
+  "waste": {
+   "blocks": 0.05,
+   "cement": 0.05,
+   "sand": 0.1,
+   "granite": 0.05,
+   "rebar": 0.1,
+   "roofing": 0.1,
+   "timber": 0.1,
+   "dpm": 0.15,
+   "fill": 0.25,
+   "ceiling": 0.05
+  },
+  "labourPercent": 0
+ },
+ "nodes": [
+  {
+   "id": "n_mwqbwo9igtotu2",
+   "x": 0,
+   "y": 0
+  },
+  {
+   "id": "n_mwqbwo9igub8zq",
+   "x": 10200,
+   "y": 0
+  },
+  {
+   "id": "n_mwqbwo9igwfjb4",
+   "x": 10200,
+   "y": 3600
+  },
+  {
+   "id": "n_mwqbwo9igyuyyn",
+   "x": 0,
+   "y": 3600
+  },
+  {
+   "id": "n_mwqbwo9ih1zdgh",
+   "x": 3900,
+   "y": 0
+  },
+  {
+   "id": "n_mwqbwo9ih3dlb7",
+   "x": 3900,
+   "y": 3600
+  },
+  {
+   "id": "n_mwqbwo9ih6tbxg",
+   "x": 6300,
+   "y": 0
+  },
+  {
+   "id": "n_mwqbwo9ih8nlbe",
+   "x": 6300,
+   "y": 3600
+  }
+ ],
+ "walls": [
+  {
+   "id": "w_mwqbwo9igv93sk",
+   "a": "n_mwqbwo9igtotu2",
+   "b": "n_mwqbwo9ih1zdgh",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwo9igxhahy",
+   "a": "n_mwqbwo9igub8zq",
+   "b": "n_mwqbwo9igwfjb4",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwo9igz8e4v",
+   "a": "n_mwqbwo9igwfjb4",
+   "b": "n_mwqbwo9ih8nlbe",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwo9ih056p6",
+   "a": "n_mwqbwo9igyuyyn",
+   "b": "n_mwqbwo9igtotu2",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwo9ih2dk29",
+   "a": "n_mwqbwo9ih1zdgh",
+   "b": "n_mwqbwo9ih6tbxg",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwo9ih4jg4y",
+   "a": "n_mwqbwo9ih3dlb7",
+   "b": "n_mwqbwo9igyuyyn",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwo9ih58x03",
+   "a": "n_mwqbwo9ih1zdgh",
+   "b": "n_mwqbwo9ih3dlb7",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwo9ih7rvut",
+   "a": "n_mwqbwo9ih6tbxg",
+   "b": "n_mwqbwo9igub8zq",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwo9ih9jsru",
+   "a": "n_mwqbwo9ih8nlbe",
+   "b": "n_mwqbwo9ih3dlb7",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwo9ihaxgg2",
+   "a": "n_mwqbwo9ih6tbxg",
+   "b": "n_mwqbwo9ih8nlbe",
+   "kind": "internal",
+   "thickness": 150
+  }
+ ],
+ "openings": [
+  {
+   "id": "o_mwqbwo9ihb8a4s",
+   "wallId": "w_mwqbwo9ih4jg4y",
+   "kind": "door",
+   "offset": 1950,
+   "width": 900,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-900"
+  },
+  {
+   "id": "o_mwqbwo9ihcshn2",
+   "wallId": "w_mwqbwo9ih9jsru",
+   "kind": "door",
+   "offset": 1200,
+   "width": 750,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-750"
+  },
+  {
+   "id": "o_mwqbwo9ihdavw7",
+   "wallId": "w_mwqbwo9igz8e4v",
+   "kind": "door",
+   "offset": 1950,
+   "width": 900,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-900"
+  },
+  {
+   "id": "o_mwqbwo9ihe92bq",
+   "wallId": "w_mwqbwo9igv93sk",
+   "kind": "window",
+   "offset": 1950,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  },
+  {
+   "id": "o_mwqbwo9ihf0vrs",
+   "wallId": "w_mwqbwo9ih2dk29",
+   "kind": "window",
+   "offset": 1200,
+   "width": 600,
+   "height": 600,
+   "sill": 1500,
+   "specId": "window-casement-600"
+  },
+  {
+   "id": "o_mwqbwo9ihgzi19",
+   "wallId": "w_mwqbwo9ih7rvut",
+   "kind": "window",
+   "offset": 1950,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  }
+ ],
+ "labels": [
+  {
+   "id": "l0",
+   "x": 1950,
+   "y": 1800,
+   "name": "Room 1"
+  },
+  {
+   "id": "l1",
+   "x": 5100,
+   "y": 1800,
+   "name": "Toilet"
+  },
+  {
+   "id": "l2",
+   "x": 8250,
+   "y": 1800,
+   "name": "Room 2"
+  }
+ ],
+ "priceOverrides": {}
+}

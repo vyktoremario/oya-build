@@ -1,0 +1,21 @@
+{
+  "name": "eval",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc -p .",
+    "generate": "tsx src/generate.ts",
+    "eval": "tsx src/run.ts",
+    "report": "tsx src/report.ts"
+  },
+  "dependencies": {
+    "@oya/estimate": "workspace:*",
+    "@oya/extract": "workspace:*",
+    "@oya/geometry": "workspace:*",
+    "@oya/schema": "workspace:*"
+  },
+  "devDependencies": {
+    "@resvg/resvg-js": "^2.6.2",
+    "tsx": "^4.23.15"
+  }
+}

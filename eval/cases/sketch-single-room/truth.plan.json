@@ -1,0 +1,171 @@
+{
+ "version": 1,
+ "name": "Single room 4.0 × 3.0 m",
+ "source": {
+  "kind": "sample",
+  "mmPerPx": null,
+  "originX": 0,
+  "originY": 0,
+  "imageWidth": 0,
+  "imageHeight": 0,
+  "scaleSource": "exact"
+ },
+ "params": {
+  "wallHeight": 3000,
+  "lintelLevel": 2100,
+  "lintelDepth": 225,
+  "lintelMainBars": 4,
+  "lintelMainBarDia": 12,
+  "lintelLinkDia": 8,
+  "lintelLinkSpacing": 200,
+  "concreteCover": 25,
+  "foundationWidth": 675,
+  "foundationDepth": 900,
+  "footingThickness": 225,
+  "plinthHeight": 450,
+  "coreFillFraction": 0.5,
+  "slabThickness": 150,
+  "screedThickness": 25,
+  "plasterThickness": 15,
+  "blockLength": 450,
+  "blockHeight": 225,
+  "mortarJoint": 10,
+  "mixFooting": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixLintel": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixSlab": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixCoreFill": {
+   "cement": 1,
+   "sand": 3,
+   "granite": 6
+  },
+  "mixMortar": {
+   "cement": 1,
+   "sand": 6,
+   "granite": 0
+  },
+  "mixPlaster": {
+   "cement": 1,
+   "sand": 6,
+   "granite": 0
+  },
+  "mixScreed": {
+   "cement": 1,
+   "sand": 3,
+   "granite": 0
+  },
+  "roofType": "hip",
+  "roofPitchDeg": 25,
+  "roofOverhang": 600,
+  "rafterSpacing": 600,
+  "purlinSpacing": 900,
+  "roofBracingAllowance": 0.3,
+  "waste": {
+   "blocks": 0.05,
+   "cement": 0.05,
+   "sand": 0.1,
+   "granite": 0.05,
+   "rebar": 0.1,
+   "roofing": 0.1,
+   "timber": 0.1,
+   "dpm": 0.15,
+   "fill": 0.25,
+   "ceiling": 0.05
+  },
+  "labourPercent": 0
+ },
+ "nodes": [
+  {
+   "id": "n_mwqbwfehbmv7g",
+   "x": 0,
+   "y": 0
+  },
+  {
+   "id": "n_mwqbwfehcyjad",
+   "x": 4000,
+   "y": 0
+  },
+  {
+   "id": "n_mwqbwfeiekudy",
+   "x": 4000,
+   "y": 3000
+  },
+  {
+   "id": "n_mwqbwfeig2fq4",
+   "x": 0,
+   "y": 3000
+  }
+ ],
+ "walls": [
+  {
+   "id": "w_mwqbwfehdbpdn",
+   "a": "n_mwqbwfehbmv7g",
+   "b": "n_mwqbwfehcyjad",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwfeif1s2g",
+   "a": "n_mwqbwfehcyjad",
+   "b": "n_mwqbwfeiekudy",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwfeihn9ax",
+   "a": "n_mwqbwfeiekudy",
+   "b": "n_mwqbwfeig2fq4",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwfeii1kau",
+   "a": "n_mwqbwfeig2fq4",
+   "b": "n_mwqbwfehbmv7g",
+   "kind": "external",
+   "thickness": 225
+  }
+ ],
+ "openings": [
+  {
+   "id": "o_mwqbwfeijlu9x",
+   "wallId": "w_mwqbwfeihn9ax",
+   "kind": "door",
+   "offset": 2000,
+   "width": 1200,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-entrance-steel"
+  },
+  {
+   "id": "o_mwqbwfeiksvaq",
+   "wallId": "w_mwqbwfehdbpdn",
+   "kind": "window",
+   "offset": 2000,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  }
+ ],
+ "labels": [
+  {
+   "id": "l0",
+   "x": 2000,
+   "y": 1500,
+   "name": "Shop"
+  }
+ ],
+ "priceOverrides": {}
+}

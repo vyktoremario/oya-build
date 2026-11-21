@@ -1,0 +1,647 @@
+{
+ "version": 1,
+ "name": "Three-bedroom bungalow",
+ "source": {
+  "kind": "sample",
+  "mmPerPx": null,
+  "originX": 0,
+  "originY": 0,
+  "imageWidth": 0,
+  "imageHeight": 0,
+  "scaleSource": "exact"
+ },
+ "params": {
+  "wallHeight": 3000,
+  "lintelLevel": 2100,
+  "lintelDepth": 225,
+  "lintelMainBars": 4,
+  "lintelMainBarDia": 12,
+  "lintelLinkDia": 8,
+  "lintelLinkSpacing": 200,
+  "concreteCover": 25,
+  "foundationWidth": 675,
+  "foundationDepth": 900,
+  "footingThickness": 225,
+  "plinthHeight": 450,
+  "coreFillFraction": 0.5,
+  "slabThickness": 150,
+  "screedThickness": 25,
+  "plasterThickness": 15,
+  "blockLength": 450,
+  "blockHeight": 225,
+  "mortarJoint": 10,
+  "mixFooting": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixLintel": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixSlab": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixCoreFill": {
+   "cement": 1,
+   "sand": 3,
+   "granite": 6
+  },
+  "mixMortar": {
+   "cement": 1,
+   "sand": 6,
+   "granite": 0
+  },
+  "mixPlaster": {
+   "cement": 1,
+   "sand": 6,
+   "granite": 0
+  },
+  "mixScreed": {
+   "cement": 1,
+   "sand": 3,
+   "granite": 0
+  },
+  "roofType": "hip",
+  "roofPitchDeg": 25,
+  "roofOverhang": 600,
+  "rafterSpacing": 600,
+  "purlinSpacing": 900,
+  "roofBracingAllowance": 0.3,
+  "waste": {
+   "blocks": 0.05,
+   "cement": 0.05,
+   "sand": 0.1,
+   "granite": 0.05,
+   "rebar": 0.1,
+   "roofing": 0.1,
+   "timber": 0.1,
+   "dpm": 0.15,
+   "fill": 0.25,
+   "ceiling": 0.05
+  },
+  "labourPercent": 0
+ },
+ "nodes": [
+  {
+   "id": "n_mwqbwktf8y0y2p",
+   "x": 0,
+   "y": 0
+  },
+  {
+   "id": "n_mwqbwktf8zdzc5",
+   "x": 13200,
+   "y": 0
+  },
+  {
+   "id": "n_mwqbwktf91o8t3",
+   "x": 13200,
+   "y": 10500
+  },
+  {
+   "id": "n_mwqbwktf93jqre",
+   "x": 0,
+   "y": 10500
+  },
+  {
+   "id": "n_mwqbwktf96segk",
+   "x": 0,
+   "y": 4500
+  },
+  {
+   "id": "n_mwqbwktf98pmds",
+   "x": 13200,
+   "y": 4500
+  },
+  {
+   "id": "n_mwqbwktf9bor6m",
+   "x": 4200,
+   "y": 5700
+  },
+  {
+   "id": "n_mwqbwktf9cmk57",
+   "x": 13200,
+   "y": 5700
+  },
+  {
+   "id": "n_mwqbwktf9f615y",
+   "x": 4200,
+   "y": 0
+  },
+  {
+   "id": "n_mwqbwktf9il6iz",
+   "x": 4200,
+   "y": 4500
+  },
+  {
+   "id": "n_mwqbwktf9mql6s",
+   "x": 6000,
+   "y": 0
+  },
+  {
+   "id": "n_mwqbwktf9orshx",
+   "x": 6000,
+   "y": 4500
+  },
+  {
+   "id": "n_mwqbwktf9rf3wi",
+   "x": 9600,
+   "y": 0
+  },
+  {
+   "id": "n_mwqbwktg9tk2bw",
+   "x": 9600,
+   "y": 4500
+  },
+  {
+   "id": "n_mwqbwktg9whelx",
+   "x": 7200,
+   "y": 5700
+  },
+  {
+   "id": "n_mwqbwktg9y9kkh",
+   "x": 7200,
+   "y": 10500
+  },
+  {
+   "id": "n_mwqbwktga17qdp",
+   "x": 10200,
+   "y": 5700
+  },
+  {
+   "id": "n_mwqbwktga3fzbf",
+   "x": 10200,
+   "y": 10500
+  },
+  {
+   "id": "n_mwqbwktga6l9hr",
+   "x": 10200,
+   "y": 8100
+  },
+  {
+   "id": "n_mwqbwktga8petl",
+   "x": 13200,
+   "y": 8100
+  }
+ ],
+ "walls": [
+  {
+   "id": "w_mwqbwktf90h0bs",
+   "a": "n_mwqbwktf8y0y2p",
+   "b": "n_mwqbwktf9f615y",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwktf92d8ip",
+   "a": "n_mwqbwktf8zdzc5",
+   "b": "n_mwqbwktf98pmds",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwktf94bnmb",
+   "a": "n_mwqbwktf91o8t3",
+   "b": "n_mwqbwktga3fzbf",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwktf955t5g",
+   "a": "n_mwqbwktf93jqre",
+   "b": "n_mwqbwktf96segk",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwktf97vbfh",
+   "a": "n_mwqbwktf96segk",
+   "b": "n_mwqbwktf8y0y2p",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwktf99i0vk",
+   "a": "n_mwqbwktf98pmds",
+   "b": "n_mwqbwktf9cmk57",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwktf9afq46",
+   "a": "n_mwqbwktf96segk",
+   "b": "n_mwqbwktf9il6iz",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwktf9dysuu",
+   "a": "n_mwqbwktf9cmk57",
+   "b": "n_mwqbwktga8petl",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwktf9e5zqn",
+   "a": "n_mwqbwktf9bor6m",
+   "b": "n_mwqbwktg9whelx",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwktf9g2xl3",
+   "a": "n_mwqbwktf9f615y",
+   "b": "n_mwqbwktf9mql6s",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwktf9hw3wq",
+   "a": "n_mwqbwktf9f615y",
+   "b": "n_mwqbwktf9il6iz",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwktf9jvlkv",
+   "a": "n_mwqbwktf9il6iz",
+   "b": "n_mwqbwktf9orshx",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwktf9lgygc",
+   "a": "n_mwqbwktf9il6iz",
+   "b": "n_mwqbwktf9bor6m",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwktf9n0j9j",
+   "a": "n_mwqbwktf9mql6s",
+   "b": "n_mwqbwktf9rf3wi",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwktf9p5aki",
+   "a": "n_mwqbwktf9orshx",
+   "b": "n_mwqbwktg9tk2bw",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwktf9q1gjx",
+   "a": "n_mwqbwktf9mql6s",
+   "b": "n_mwqbwktf9orshx",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwktf9s2ari",
+   "a": "n_mwqbwktf9rf3wi",
+   "b": "n_mwqbwktf8zdzc5",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwktg9uoae4",
+   "a": "n_mwqbwktg9tk2bw",
+   "b": "n_mwqbwktf98pmds",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwktg9vqx23",
+   "a": "n_mwqbwktf9rf3wi",
+   "b": "n_mwqbwktg9tk2bw",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwktg9xmvfg",
+   "a": "n_mwqbwktg9whelx",
+   "b": "n_mwqbwktga17qdp",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwktg9z5vta",
+   "a": "n_mwqbwktg9y9kkh",
+   "b": "n_mwqbwktf93jqre",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwktga0yxbq",
+   "a": "n_mwqbwktg9whelx",
+   "b": "n_mwqbwktg9y9kkh",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwktga2mxtj",
+   "a": "n_mwqbwktga17qdp",
+   "b": "n_mwqbwktf9cmk57",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwktga4eprj",
+   "a": "n_mwqbwktga3fzbf",
+   "b": "n_mwqbwktg9y9kkh",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwktga55hk7",
+   "a": "n_mwqbwktga17qdp",
+   "b": "n_mwqbwktga6l9hr",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwktga7e6zb",
+   "a": "n_mwqbwktga6l9hr",
+   "b": "n_mwqbwktga3fzbf",
+   "kind": "internal",
+   "thickness": 150
+  },
+  {
+   "id": "w_mwqbwktga9djiy",
+   "a": "n_mwqbwktga8petl",
+   "b": "n_mwqbwktf91o8t3",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqbwktgaa7sjc",
+   "a": "n_mwqbwktga6l9hr",
+   "b": "n_mwqbwktga8petl",
+   "kind": "internal",
+   "thickness": 150
+  }
+ ],
+ "openings": [
+  {
+   "id": "o_mwqbwkthabzf83",
+   "wallId": "w_mwqbwktg9z5vta",
+   "kind": "door",
+   "offset": 4800,
+   "width": 1200,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-entrance-steel"
+  },
+  {
+   "id": "o_mwqbwkthac0rhn",
+   "wallId": "w_mwqbwktf955t5g",
+   "kind": "window",
+   "offset": 3000,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  },
+  {
+   "id": "o_mwqbwkthad8eo8",
+   "wallId": "w_mwqbwktg9z5vta",
+   "kind": "window",
+   "offset": 1800,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  },
+  {
+   "id": "o_mwqbwkthaebi2j",
+   "wallId": "w_mwqbwktf9afq46",
+   "kind": "door",
+   "offset": 3000,
+   "width": 900,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-900"
+  },
+  {
+   "id": "o_mwqbwkthafm4oz",
+   "wallId": "w_mwqbwktf90h0bs",
+   "kind": "window",
+   "offset": 2100,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  },
+  {
+   "id": "o_mwqbwkthagddtq",
+   "wallId": "w_mwqbwktf97vbfh",
+   "kind": "window",
+   "offset": 2250,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  },
+  {
+   "id": "o_mwqbwkthahp6fl",
+   "wallId": "w_mwqbwktf9jvlkv",
+   "kind": "door",
+   "offset": 900,
+   "width": 750,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-750"
+  },
+  {
+   "id": "o_mwqbwkthaiiwp1",
+   "wallId": "w_mwqbwktf9g2xl3",
+   "kind": "window",
+   "offset": 900,
+   "width": 600,
+   "height": 600,
+   "sill": 1500,
+   "specId": "window-casement-600"
+  },
+  {
+   "id": "o_mwqbwkthajpb67",
+   "wallId": "w_mwqbwktf9p5aki",
+   "kind": "door",
+   "offset": 900,
+   "width": 900,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-900"
+  },
+  {
+   "id": "o_mwqbwkthakiyi5",
+   "wallId": "w_mwqbwktf9n0j9j",
+   "kind": "window",
+   "offset": 1800,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  },
+  {
+   "id": "o_mwqbwkthalle19",
+   "wallId": "w_mwqbwktg9uoae4",
+   "kind": "door",
+   "offset": 900,
+   "width": 900,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-900"
+  },
+  {
+   "id": "o_mwqbwkthamq746",
+   "wallId": "w_mwqbwktf9s2ari",
+   "kind": "window",
+   "offset": 1800,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  },
+  {
+   "id": "o_mwqbwkthanznle",
+   "wallId": "w_mwqbwktf92d8ip",
+   "kind": "window",
+   "offset": 2250,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  },
+  {
+   "id": "o_mwqbwkthao9el8",
+   "wallId": "w_mwqbwktf9lgygc",
+   "kind": "door",
+   "offset": 600,
+   "width": 900,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-900"
+  },
+  {
+   "id": "o_mwqbwkthap0qih",
+   "wallId": "w_mwqbwktga0yxbq",
+   "kind": "door",
+   "offset": 2300,
+   "width": 900,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-900"
+  },
+  {
+   "id": "o_mwqbwkthaqho2b",
+   "wallId": "w_mwqbwktga4eprj",
+   "kind": "window",
+   "offset": 1500,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  },
+  {
+   "id": "o_mwqbwkthar1zhy",
+   "wallId": "w_mwqbwktga2mxtj",
+   "kind": "door",
+   "offset": 1500,
+   "width": 900,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-900"
+  },
+  {
+   "id": "o_mwqbwkthasdesh",
+   "wallId": "w_mwqbwktf9dysuu",
+   "kind": "window",
+   "offset": 1200,
+   "width": 600,
+   "height": 600,
+   "sill": 1500,
+   "specId": "window-casement-600"
+  },
+  {
+   "id": "o_mwqbwktiat1dgy",
+   "wallId": "w_mwqbwktga7e6zb",
+   "kind": "door",
+   "offset": 1200,
+   "width": 750,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-750"
+  },
+  {
+   "id": "o_mwqbwktiaukn0y",
+   "wallId": "w_mwqbwktga9djiy",
+   "kind": "window",
+   "offset": 1200,
+   "width": 600,
+   "height": 600,
+   "sill": 1500,
+   "specId": "window-casement-600"
+  }
+ ],
+ "labels": [
+  {
+   "id": "l0",
+   "x": 2100,
+   "y": 2250,
+   "name": "Bedroom 1"
+  },
+  {
+   "id": "l1",
+   "x": 5100,
+   "y": 2250,
+   "name": "Bath"
+  },
+  {
+   "id": "l2",
+   "x": 7800,
+   "y": 2250,
+   "name": "Bedroom 2"
+  },
+  {
+   "id": "l3",
+   "x": 11400,
+   "y": 2250,
+   "name": "Bedroom 3"
+  },
+  {
+   "id": "l4",
+   "x": 8700,
+   "y": 5100,
+   "name": "Corridor"
+  },
+  {
+   "id": "l5",
+   "x": 2600,
+   "y": 7800,
+   "name": "Living room"
+  },
+  {
+   "id": "l6",
+   "x": 8700,
+   "y": 8000,
+   "name": "Kitchen"
+  },
+  {
+   "id": "l7",
+   "x": 11700,
+   "y": 6900,
+   "name": "Store"
+  },
+  {
+   "id": "l8",
+   "x": 11700,
+   "y": 9300,
+   "name": "WC"
+  }
+ ],
+ "priceOverrides": {}
+}
