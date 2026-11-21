@@ -8,7 +8,7 @@ granite, rebar, roofing, timber, doors and windows, priced from a dated Abuja pr
 and the 3D model and the cost update together.
 
 <!-- demo:start -->
-Live: _deploy link goes here_ · Demo GIF: _recorded from the live site_
+**Live: [oya-build.vercel.app](https://oya-build.vercel.app)**. Try **Build the sample**, drag a wall, then **Walk**.
 <!-- demo:end -->
 
 ## The 15-second demo
