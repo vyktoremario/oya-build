@@ -1,7 +1,8 @@
 "use client";
 
 import dynamic from "next/dynamic";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { topology } from "@oya/geometry";
 import { useStore } from "@/lib/store";
 import { loadLocalPlan, planFromHash, savePlanLocally } from "@/lib/share";
 import { loadSample } from "@/samples";
@@ -10,18 +11,43 @@ import { BoqPanel } from "./BoqPanel";
 import { Toolbar } from "./Toolbar";
 import { Inspector } from "./Inspector";
 import { UploadDialog } from "./UploadDialog";
+import { StyleMenu } from "./StyleMenu";
+import { useBoq } from "./BoqPanel";
+import { formatNaira } from "@/lib/format";
+
+/** The running total, floating over the 3D view when the Cost panel is hidden. */
+function TotalChip() {
+  const showCostPane = useStore((s) => s.showCostPane);
+  const set = useStore((s) => s.set);
+  const boq = useBoq();
+  if (showCostPane) return null;
+  return (
+    <button
+      onClick={() => set({ showCostPane: true })}
+      className="absolute bottom-3 left-3 z-10 hidden rounded-lg bg-white/95 px-3 py-2 text-left shadow-sm lg:block"
+      title="Show the bill of quantities"
+    >
+      <div className="text-[10px] uppercase tracking-wider text-[var(--muted)]">Estimated materials</div>
+      <div className="text-lg font-semibold tabular-nums">{formatNaira(boq.total)}</div>
+    </button>
+  );
+}
 
 const Scene3D = dynamic(() => import("./Scene3D"), { ssr: false, loading: () => <div className="grid h-full place-items-center text-xs text-[var(--muted)]">Loading 3D…</div> });
 
 const TOOL_KEYS: Record<string, Parameters<ReturnType<typeof useStore.getState>["setTool"]>[0]> = { v: "select", w: "wall", d: "door", n: "window", l: "label", s: "scale" };
 
 function Flags() {
-  const flags = useStore((s) => s.flags);
+  const allFlags = useStore((s) => s.flags);
+  const plan = useStore((s) => s.plan);
+  // Topology problems are computed live, so they disappear as soon as they're fixed.
+  const openWalls = useMemo(() => topology(plan).openWallIds.size, [plan]);
+  const flags = allFlags.filter((f) => !f.message.includes("don't close a room"));
   const extraction = useStore((s) => s.extraction);
   const source = useStore((s) => s.plan.source);
   const [open, setOpen] = useState(true);
-  if (!extraction && flags.length === 0) return null;
-  const warn = flags.filter((f) => f.level === "warn");
+  if (!extraction && flags.length === 0 && openWalls === 0) return null;
+  const warn = [...flags.filter((f) => f.level === "warn"), ...(openWalls ? [null] : [])];
   const grouped = [...flags.reduce((m, f) => m.set(f.message, { ...f, count: (m.get(f.message)?.count ?? 0) + 1 }), new Map<string, (typeof flags)[number] & { count: number }>()).values()];
   return (
     <div className="absolute left-2 top-2 z-10 max-w-sm rounded-lg border border-[var(--line)] bg-white/95 text-xs shadow-sm">
@@ -34,6 +60,11 @@ function Flags() {
       {open && (
         <div className="space-y-1.5 border-t border-[var(--line)] px-3 py-2">
           {source.scaleSource === "guess" && <p className="font-medium text-[var(--warn-ink)]">Scale is a guess: use “Set scale” on a line you know.</p>}
+          {openWalls > 0 && (
+            <p className="font-medium text-[var(--warn-ink)]">
+              {openWalls} wall{openWalls > 1 ? "s" : ""} in amber {openWalls > 1 ? "don't" : "doesn't"} close a room. A wall is probably missing: compare with the photo and draw it with the Wall tool.
+            </p>
+          )}
           <ul className="max-h-40 space-y-1 overflow-y-auto">
             {grouped.map((f) => (
               <li key={f.message} className={f.level === "warn" ? "text-[var(--warn-ink)]" : "text-[var(--muted)]"}>
@@ -56,6 +87,7 @@ function Flags() {
 function ViewControls() {
   const walk = useStore((s) => s.walk);
   const showRoof = useStore((s) => s.showRoof);
+  const focused = useStore((s) => !s.showPlanPane && !s.showCostPane);
   const set = useStore((s) => s.set);
   const [touch] = useState(() => window.matchMedia("(pointer: coarse)").matches);
   return (
@@ -64,12 +96,21 @@ function ViewControls() {
         Orbit
       </button>
       {!touch && (
-        <button onClick={() => set({ walk: true })} aria-pressed={walk} className={`rounded px-2 py-1 ${walk ? "bg-[var(--ink)] text-white" : ""}`} data-testid="walk-button">
+        <button onClick={() => set({ walk: true, showPlanPane: false, showCostPane: false })} aria-pressed={walk} className={`rounded px-2 py-1 ${walk ? "bg-[var(--ink)] text-white" : ""}`} data-testid="walk-button">
           Walk
         </button>
       )}
       <button onClick={() => set({ showRoof: !showRoof })} className="rounded px-2 py-1 hover:bg-[var(--hover)]">
         {showRoof ? "Hide roof" : "Show roof"}
+      </button>
+      <StyleMenu />
+      <button
+        onClick={() => set({ showPlanPane: focused, showCostPane: focused })}
+        className="hidden rounded px-2 py-1 hover:bg-[var(--hover)] lg:inline"
+        title={focused ? "Show the plan and the bill again" : "Hide the side panels"}
+        data-testid="focus-3d"
+      >
+        {focused ? "Exit full view" : "Full view"}
       </button>
     </div>
   );
@@ -115,7 +156,10 @@ export default function Workspace({ openUpload = false }: { openUpload?: boolean
     return () => window.removeEventListener("keydown", onKey);
   }, []);
 
-  const pane = (id: typeof tab) => `${tab === id ? "flex" : "hidden"} lg:flex`;
+  const showPlanPane = useStore((s) => s.showPlanPane);
+  const showCostPane = useStore((s) => s.showCostPane);
+  const pane = (id: typeof tab, visible = true) => `${tab === id ? "flex" : "hidden"} ${visible ? "lg:flex" : "lg:hidden"}`;
+  const cols = [showPlanPane ? "minmax(0,1fr)" : null, "minmax(0,1fr)", showCostPane ? "380px" : null].filter(Boolean).join(" ");
 
   return (
     <div className="flex h-dvh flex-col bg-[var(--paper)] text-[var(--ink)]">
@@ -127,8 +171,8 @@ export default function Workspace({ openUpload = false }: { openUpload?: boolean
           </button>
         ))}
       </nav>
-      <main className="grid min-h-0 flex-1 grid-cols-1 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)_380px]">
-        <section className={`${pane("plan")} relative min-h-0 border-r border-[var(--line)]`} aria-label="2D plan">
+      <main className="grid min-h-0 flex-1 grid-cols-1 lg:[grid-template-columns:var(--cols)]" style={{ "--cols": cols } as React.CSSProperties}>
+        <section className={`${pane("plan", showPlanPane)} relative min-h-0 border-r border-[var(--line)]`} aria-label="2D plan">
           <PlanEditor />
           <Flags />
           <Inspector />
@@ -136,8 +180,9 @@ export default function Workspace({ openUpload = false }: { openUpload?: boolean
         <section className={`${pane("3d")} relative min-h-0 border-r border-[var(--line)]`} aria-label="3D model">
           <Scene3D />
           <ViewControls />
+          <TotalChip />
         </section>
-        <aside className={`${pane("cost")} min-h-0 flex-col bg-white`} aria-label="Bill of quantities">
+        <aside className={`${pane("cost", showCostPane)} min-h-0 flex-col bg-white`} aria-label="Bill of quantities">
           <BoqPanel />
         </aside>
       </main>

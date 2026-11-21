@@ -2,12 +2,14 @@ import { describe, expect, it } from "vitest";
 import type { OpeningSpec, RawExtraction } from "@oya/schema";
 import { estimateScale, postProcess, rescalePlan, topology } from "../src";
 
+const base = { style: "flush" as const, entrance: false, autoDetect: true };
 const specs: OpeningSpec[] = [
-  { id: "door-entrance-steel", kind: "door", name: "Entrance", width: 900, height: 2100, sill: 0, priceItemId: "a" },
-  { id: "door-flush-900", kind: "door", name: "Flush", width: 900, height: 2100, sill: 0, priceItemId: "b" },
-  { id: "door-flush-750", kind: "door", name: "Flush 750", width: 750, height: 2100, sill: 0, priceItemId: "c" },
-  { id: "window-casement-1200", kind: "window", name: "W", width: 1200, height: 1200, sill: 900, priceItemId: "d" },
-  { id: "window-casement-600", kind: "window", name: "W small", width: 600, height: 600, sill: 1500, priceItemId: "e" },
+  { ...base, id: "door-entrance-steel", kind: "door", name: "Entrance", width: 900, height: 2100, sill: 0, priceItemId: "a", style: "steel", entrance: true },
+  { ...base, id: "door-flush-900", kind: "door", name: "Flush", width: 900, height: 2100, sill: 0, priceItemId: "b" },
+  { ...base, id: "door-flush-750", kind: "door", name: "Flush 750", width: 750, height: 2100, sill: 0, priceItemId: "c" },
+  { ...base, id: "window-casement-1200", kind: "window", name: "W", width: 1200, height: 1200, sill: 900, priceItemId: "d", style: "casement" },
+  { ...base, id: "window-casement-600", kind: "window", name: "W small", width: 600, height: 600, sill: 1500, priceItemId: "e", style: "casement" },
+  { ...base, id: "window-sliding-1200", kind: "window", name: "Sliding (user choice only)", width: 1200, height: 1200, sill: 900, priceItemId: "f", style: "sliding", autoDetect: false },
 ];
 
 const w = (x1: number, y1: number, x2: number, y2: number, kind: "external" | "internal" | "unknown" = "unknown", confidence = 0.9) => ({ x1, y1, x2, y2, thicknessPx: 0, kind, confidence });

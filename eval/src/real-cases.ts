@@ -3,7 +3,7 @@ import type { PlanSpec, Seg } from "./dsl";
 /**
  * Ground truth for real hand sketches (phone photos), entered by hand from the dimensions written
  * on each drawing; positions that aren't dimensioned were read off the drawing at its own scale
- * (about ±300 mm). The images themselves live in eval/cases-local/ and are not committed.
+ * (about ±300 mm). Images are in eval/cases/real-sketch-N (from Unsplash, Unsplash License).
  */
 
 const box = (x0: number, y0: number, x1: number, y1: number): Seg[] => [

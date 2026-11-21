@@ -1,0 +1,271 @@
+{
+ "raw": {
+  "imageWidth": 1314,
+  "imageHeight": 875,
+  "drawingType": "printed_plan",
+  "walls": [
+   {
+    "x1": 442,
+    "y1": 204,
+    "x2": 734,
+    "y2": 204,
+    "thicknessPx": 18,
+    "kind": "external",
+    "confidence": 0.85
+   },
+   {
+    "x1": 734,
+    "y1": 204,
+    "x2": 734,
+    "y2": 131,
+    "thicknessPx": 20,
+    "kind": "external",
+    "confidence": 0.55
+   },
+   {
+    "x1": 734,
+    "y1": 131,
+    "x2": 872,
+    "y2": 131,
+    "thicknessPx": 18,
+    "kind": "external",
+    "confidence": 0.6
+   },
+   {
+    "x1": 872,
+    "y1": 131,
+    "x2": 872,
+    "y2": 210,
+    "thicknessPx": 20,
+    "kind": "external",
+    "confidence": 0.7
+   },
+   {
+    "x1": 870,
+    "y1": 210,
+    "x2": 870,
+    "y2": 614,
+    "thicknessPx": 20,
+    "kind": "external",
+    "confidence": 0.75
+   },
+   {
+    "x1": 442,
+    "y1": 614,
+    "x2": 870,
+    "y2": 614,
+    "thicknessPx": 20,
+    "kind": "external",
+    "confidence": 0.85
+   },
+   {
+    "x1": 442,
+    "y1": 204,
+    "x2": 442,
+    "y2": 614,
+    "thicknessPx": 20,
+    "kind": "external",
+    "confidence": 0.85
+   },
+   {
+    "x1": 360,
+    "y1": 375,
+    "x2": 442,
+    "y2": 375,
+    "thicknessPx": 20,
+    "kind": "external",
+    "confidence": 0.6
+   }
+  ],
+  "openings": [
+   {
+    "kind": "door",
+    "x": 442,
+    "y": 322,
+    "widthPx": 75,
+    "confidence": 0.8
+   },
+   {
+    "kind": "window",
+    "x": 870,
+    "y": 325,
+    "widthPx": 230,
+    "confidence": 0.8
+   },
+   {
+    "kind": "door",
+    "x": 870,
+    "y": 532,
+    "widthPx": 115,
+    "confidence": 0.75
+   },
+   {
+    "kind": "door",
+    "x": 506,
+    "y": 614,
+    "widthPx": 107,
+    "confidence": 0.8
+   }
+  ],
+  "rooms": [],
+  "dimensions": [
+   {
+    "text": "2080",
+    "valueMm": 2080,
+    "x1": 453,
+    "y1": 217,
+    "x2": 740,
+    "y2": 217,
+    "confidence": 0.75
+   },
+   {
+    "text": "945",
+    "valueMm": 945,
+    "x1": 745,
+    "y1": 200,
+    "x2": 862,
+    "y2": 200,
+    "confidence": 0.6
+   },
+   {
+    "text": "3025",
+    "valueMm": 3025,
+    "x1": 453,
+    "y1": 470,
+    "x2": 858,
+    "y2": 470,
+    "confidence": 0.8
+   },
+   {
+    "text": "889",
+    "valueMm": 889,
+    "x1": 453,
+    "y1": 578,
+    "x2": 560,
+    "y2": 578,
+    "confidence": 0.7
+   },
+   {
+    "text": "1908",
+    "valueMm": 1908,
+    "x1": 560,
+    "y1": 578,
+    "x2": 815,
+    "y2": 578,
+    "confidence": 0.75
+   },
+   {
+    "text": "495",
+    "valueMm": 495,
+    "x1": 815,
+    "y1": 578,
+    "x2": 862,
+    "y2": 578,
+    "confidence": 0.6
+   },
+   {
+    "text": "3185",
+    "valueMm": 3185,
+    "x1": 575,
+    "y1": 213,
+    "x2": 575,
+    "y2": 603,
+    "confidence": 0.75
+   },
+   {
+    "text": "3760",
+    "valueMm": 3760,
+    "x1": 750,
+    "y1": 140,
+    "x2": 750,
+    "y2": 603,
+    "confidence": 0.7
+   },
+   {
+    "text": "600",
+    "valueMm": 600,
+    "x1": 482,
+    "y1": 213,
+    "x2": 482,
+    "y2": 290,
+    "confidence": 0.6
+   },
+   {
+    "text": "565",
+    "valueMm": 565,
+    "x1": 447,
+    "y1": 290,
+    "x2": 447,
+    "y2": 360,
+    "confidence": 0.6
+   },
+   {
+    "text": "665",
+    "valueMm": 665,
+    "x1": 478,
+    "y1": 290,
+    "x2": 478,
+    "y2": 375,
+    "confidence": 0.5
+   },
+   {
+    "text": "1920",
+    "valueMm": 1920,
+    "x1": 478,
+    "y1": 375,
+    "x2": 478,
+    "y2": 603,
+    "confidence": 0.6
+   },
+   {
+    "text": "515",
+    "valueMm": 515,
+    "x1": 850,
+    "y1": 140,
+    "x2": 850,
+    "y2": 210,
+    "confidence": 0.5
+   },
+   {
+    "text": "1875",
+    "valueMm": 1875,
+    "x1": 850,
+    "y1": 210,
+    "x2": 850,
+    "y2": 440,
+    "confidence": 0.7
+   },
+   {
+    "text": "230",
+    "valueMm": 230,
+    "x1": 850,
+    "y1": 440,
+    "x2": 850,
+    "y2": 473,
+    "confidence": 0.5
+   },
+   {
+    "text": "899",
+    "valueMm": 899,
+    "x1": 848,
+    "y1": 473,
+    "x2": 848,
+    "y2": 590,
+    "confidence": 0.6
+   }
+  ],
+  "notes": [
+   "Single-room measured drawing with no room name.",
+   "Top-right wall portion partly obscured by a ruler; step position estimated.",
+   "Lintel/sill level annotations not represented; small dimensions (265, 145, 120) near D1 and bottom-right omitted."
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5 (prompt 2026-11-21.1)",
+  "inputTokens": 3943,
+  "outputTokens": 2581,
+  "costUsd": 0.067392,
+  "latencyMs": 23538,
+  "at": "2026-11-21T12:10:30.462Z"
+ }
+}

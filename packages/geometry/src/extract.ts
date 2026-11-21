@@ -238,12 +238,12 @@ export function closeCorners(input: Plan, tol = 600): Plan {
 const STANDARD_WIDTHS = { door: [750, 900, 1200], window: [600, 900, 1200, 1500] } as const;
 
 function pickSpec(specs: OpeningSpec[], kind: "door" | "window", widthMm: number, entrance: boolean): OpeningSpec | undefined {
-  const ofKind = specs.filter((s) => s.kind === kind);
+  const ofKind = specs.filter((s) => s.kind === kind && s.autoDetect !== false);
   if (kind === "door" && entrance) {
-    const entrance = ofKind.find((s) => s.id.includes("entrance"));
+    const entrance = ofKind.find((s) => s.entrance);
     if (entrance) return entrance;
   }
-  const candidates = kind === "door" ? ofKind.filter((s) => !s.id.includes("entrance")) : ofKind;
+  const candidates = kind === "door" ? ofKind.filter((s) => !s.entrance) : ofKind;
   return candidates.reduce<OpeningSpec | undefined>(
     (best, s) => (!best || Math.abs(s.width - widthMm) < Math.abs(best.width - widthMm) ? s : best),
     undefined,

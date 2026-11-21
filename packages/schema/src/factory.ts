@@ -19,5 +19,6 @@ export function emptyPlan(name = "Untitled plan"): Plan {
     openings: [],
     labels: [],
     priceOverrides: {},
+    appearance: { roofColor: "#8e2f2a", wallColor: "#efe8da", floor: "tiles" },
   };
 }

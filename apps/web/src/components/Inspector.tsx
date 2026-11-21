@@ -3,7 +3,7 @@
 import { DEFAULT_PRICE_BOOK } from "@oya/estimate";
 import { THICKNESS, indexPlan, setWallProps, updateOpening, wallLength } from "@oya/geometry";
 import { useStore } from "@/lib/store";
-import { formatMm } from "@/lib/format";
+import { formatMm, formatNaira } from "@/lib/format";
 
 export function Inspector() {
   const selection = useStore((s) => s.selection);
@@ -58,6 +58,26 @@ export function Inspector() {
             </option>
           ))}
         </select>
+        <div className="text-[11px] text-[var(--muted)]">
+          {formatNaira(DEFAULT_PRICE_BOOK.items.find((i) => i.id === specs.find((x) => x.id === o.specId)?.priceItemId)?.rate ?? 0)} each (Abuja, Nov 2026)
+        </div>
+        <button
+          className="w-full rounded border border-[var(--line)] px-2 py-1 hover:bg-[var(--hover)]"
+          onClick={() => {
+            const s = specs.find((x) => x.id === o.specId)!;
+            // Same kind and same size class only: a main entrance door stays an entrance door.
+            apply((p) => ({
+              ...p,
+              openings: p.openings.map((x) => {
+                const cur = specs.find((y) => y.id === x.specId);
+                const sameClass = x.kind === o.kind && Boolean(cur?.entrance) === Boolean(s.entrance) && Boolean(cur && (o.kind === "door" ? Math.abs(cur.width - s.width) <= 150 : Math.abs(cur.width - s.width) <= 300 && cur.height === s.height));
+                return sameClass ? { ...x, specId: s.id, width: s.width, height: s.height, sill: s.sill } : x;
+              }),
+            }));
+          }}
+        >
+          Use this for all similar {o.kind}s
+        </button>
         <div className="text-[11px] text-[var(--muted)]">Drag it along the wall. Delete removes it.</div>
       </>
     );

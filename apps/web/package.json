@@ -8,7 +8,8 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "next typegen && tsc --noEmit",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "demo:gif": "tsx scripts/record-demo.mts"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.12.0",
@@ -33,12 +34,16 @@
     "@playwright/test": "^1.65.1",
     "@tailwindcss/turbopack": "4.3.3",
     "@types/node": "^20",
+    "@types/pngjs": "^6.0.5",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "@types/three": "^0.187.0",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
+    "gifenc": "^1.0.3",
+    "pngjs": "^7.0.0",
     "tailwindcss": "4.3.3",
+    "tsx": "^4.23.15",
     "typescript": "^5"
   },
   "packageManager": "pnpm@10.14.0"

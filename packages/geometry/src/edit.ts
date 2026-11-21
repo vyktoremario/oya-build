@@ -20,12 +20,49 @@ export function moveNode(plan: Plan, nodeId: string, to: Vec2): Plan {
   return clampOpenings(next);
 }
 
-/** Move a whole wall (both nodes) by a delta, dragging connected walls with it. */
+/**
+ * The straight run a wall belongs to: walls are split at every junction, but to a user the whole
+ * straight line of wall is one wall. Follows collinear neighbours through junctions.
+ */
+export function collinearRun(plan: Plan, wallId: string): string[] {
+  const ix = indexPlan(plan);
+  const start = ix.walls.get(wallId);
+  if (!start) return [];
+  const a0 = ix.nodes.get(start.a)!;
+  const b0 = ix.nodes.get(start.b)!;
+  const L0 = dist(a0, b0) || 1;
+  const u = { x: (b0.x - a0.x) / L0, y: (b0.y - a0.y) / L0 };
+  const onLine = (p: Vec2) => Math.abs((p.x - a0.x) * u.y - (p.y - a0.y) * u.x) < 30;
+  const run = new Set([wallId]);
+  const queue = [start.a, start.b];
+  const seen = new Set(queue);
+  while (queue.length) {
+    const nodeId = queue.pop()!;
+    for (const wid of ix.wallsAt.get(nodeId) ?? []) {
+      if (run.has(wid)) continue;
+      const w = ix.walls.get(wid)!;
+      const other = w.a === nodeId ? w.b : w.a;
+      if (!onLine(ix.nodes.get(other)!)) continue;
+      run.add(wid);
+      if (!seen.has(other)) {
+        seen.add(other);
+        queue.push(other);
+      }
+    }
+  }
+  return [...run];
+}
+
+/** Move a whole straight run of wall by a delta; walls meeting it stretch to follow. */
 export function moveWall(plan: Plan, wallId: string, delta: Vec2): Plan {
   const next = clone(plan);
-  const w = next.walls.find((x) => x.id === wallId);
-  if (!w) return plan;
-  for (const id of new Set([w.a, w.b])) {
+  const run = collinearRun(next, wallId);
+  if (!run.length) return plan;
+  const nodeIds = new Set(run.flatMap((id) => {
+    const w = next.walls.find((x) => x.id === id)!;
+    return [w.a, w.b];
+  }));
+  for (const id of nodeIds) {
     const n = next.nodes.find((x) => x.id === id)!;
     n.x = round(n.x + delta.x);
     n.y = round(n.y + delta.y);

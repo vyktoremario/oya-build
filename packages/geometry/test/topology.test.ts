@@ -129,3 +129,20 @@ describe("3D wall boxes", () => {
     expect(total).toBeCloseTo(4000 + 225 - 1200, 6);
   });
 });
+
+describe("moveWall", () => {
+  it("moves the whole straight run, not just the segment between two junctions", async () => {
+    const { moveWall, collinearRun } = await import("../src");
+    const p = makePlan(
+      { a: [0, 0], m: [3000, 0], b: [6000, 0], c: [6000, 3000], n: [3000, 3000], d: [0, 3000] },
+      [["a", "m"], ["m", "b"], ["b", "c"], ["c", "n"], ["n", "d"], ["d", "a"], ["m", "n", "internal"]],
+    );
+    expect(collinearRun(p, "w0").sort()).toEqual(["w0", "w1"]);
+    const q = moveWall(p, "w0", { x: 0, y: -500 });
+    const y = (id: string) => q.nodes.find((n) => n.id === id)!.y;
+    expect([y("a"), y("m"), y("b")]).toEqual([-500, -500, -500]);
+    // The partition and the side walls stretch; nothing goes diagonal.
+    expect(q.nodes.find((n) => n.id === "m")!.x).toBe(3000);
+    expect(topology(q).rooms).toHaveLength(2);
+  });
+});

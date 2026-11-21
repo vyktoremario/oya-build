@@ -5,33 +5,361 @@
   "asOf": "2026-11",
   "disclaimer": "Indicative market rates gathered from public listings in November 2026, mostly the Buildocrat Abuja rate book (prices as at 7 Nov 2026, delivered within Abuja, excl. VAT). Naira prices move fast: confirm with at least three supplier quotes before you budget. Every rate is editable.",
   "items": [
-    { "id": "cement-50kg", "name": "Cement, OPC 42.5, 50 kg bag", "unit": "bag", "rate": 12000, "source": "https://rates.buildocrat.store/prices/cement/", "observedAt": "2026-11-07", "notes": "Market average; range ₦11,000–13,500. Dangote 3X ~₦12,500." },
-    { "id": "sand-sharp", "name": "Sharp sand", "unit": "t", "rate": 6500, "source": "https://rates.buildocrat.store/prices/sand/", "observedAt": "2026-11-07", "notes": "Range ₦4,500–9,000/t; a 20 t tipper load ~₦130,000." },
-    { "id": "sand-plaster", "name": "Plaster (soft) sand", "unit": "t", "rate": 7000, "source": "https://rates.buildocrat.store/prices/sand/", "observedAt": "2026-11-07", "notes": "Low confidence at source; range ₦5,600–8,400/t." },
-    { "id": "granite-19mm", "name": "Granite chippings, 3/4\" (19 mm)", "unit": "t", "rate": 9000, "source": "https://www.prioni.com.ng/current-price-of-granite-in-nigeria/", "observedAt": "2026-11-21", "notes": "Abuja ₦8,000–10,000/t per Prioni; that page is several months old. Not on the Buildocrat pages read." },
-    { "id": "block-9in", "name": "9\" (225 mm) hollow sandcrete block", "unit": "nr", "rate": 850, "source": "https://rates.buildocrat.store/prices/blocks/", "observedAt": "2026-11-07", "notes": "Range ₦650–950." },
-    { "id": "block-6in", "name": "6\" (150 mm) hollow sandcrete block", "unit": "nr", "rate": 700, "source": "https://rates.buildocrat.store/prices/blocks/", "observedAt": "2026-11-07", "notes": "Low confidence at source; range ₦560–840." },
-    { "id": "rebar-y12", "name": "Y12 high-yield rebar", "unit": "kg", "rate": 1050, "source": "https://rates.buildocrat.store/prices/iron-rods/", "observedAt": "2026-11-07", "notes": "₦1,050,000/t for 12–16 mm (range ₦950k–1.15m); ~₦11,189 per 12 m length." },
-    { "id": "rebar-y8", "name": "Y8 rebar (links)", "unit": "kg", "rate": 1100, "source": "https://rates.buildocrat.store/prices/iron-rods/", "observedAt": "2026-11-07", "notes": "₦1,100,000/t for 8–10 mm; ~₦5,214 per 12 m length." },
-    { "id": "binding-wire", "name": "Binding wire", "unit": "kg", "rate": 1000, "source": "https://keyupro.com/index.php?dispatch=products.view&product_id=292", "observedAt": "2026-11-21", "notes": "₦20,000 per 20 kg roll (one retail listing; others ₦16,500–35,000)." },
-    { "id": "dpm", "name": "Polythene DPM (1000 gauge)", "unit": "m²", "rate": 390, "source": "https://rates.buildocrat.store/", "observedAt": "2026-11-07", "notes": "Buildocrat BoQ rate A08 incl. 150 mm laps; a laid rate, not a material-only price." },
-    { "id": "laterite-fill", "name": "Laterite filling", "unit": "t", "rate": 4250, "source": "https://rates.buildocrat.store/prices/sand/", "observedAt": "2026-11-07", "notes": "Low confidence at source; ~₦85,000 per 20 t load." },
-    { "id": "roofing-longspan", "name": "Long-span aluminium sheet 0.55 mm (Grade A)", "unit": "m²", "rate": 8100, "source": "https://rates.buildocrat.store/prices/roofing-sheets/", "observedAt": "2026-11-07", "notes": "Market grade; caliper (industrial) grade ~₦13,200/m²." },
-    { "id": "timber-2x4", "name": "2\"×4\" × 12 ft hardwood", "unit": "piece", "rate": 4800, "source": "https://rates.buildocrat.store/prices/timber/", "observedAt": "2026-11-07", "notes": "Low confidence at source (₦3,840–5,760). Lagos guides quote ₦1,500–3,800 for gmelina/softwood." },
-    { "id": "timber-2x3", "name": "2\"×3\" × 12 ft hardwood", "unit": "piece", "rate": 3500, "source": "https://rates.buildocrat.store/prices/timber/", "observedAt": "2026-11-07", "notes": "Low confidence at source (₦2,800–4,200)." },
-    { "id": "fascia-1x10", "name": "1\" fascia board × 12 ft", "unit": "piece", "rate": 6500, "source": "https://rates.buildocrat.store/prices/timber/", "observedAt": "2026-11-07", "notes": "Proxy: 1\"×12\" plank rate; no fascia-board price found." },
-    { "id": "ceiling-pvc", "name": "PVC ceiling panels", "unit": "m²", "rate": 3500, "source": "https://nigeriabuildingcost.ng/pop-ceiling-calculator", "observedAt": "2026-11-21", "notes": "₦2,500–4,500/m² installed. Buildocrat's PVC ceiling on 2×2 frame is ~₦8,736/m² incl. framing." },
-    { "id": "door-entrance-steel", "name": "Steel security entrance door 1200 × 2100", "unit": "nr", "rate": 420000, "source": "https://rates.buildocrat.store/prices/doors-windows/", "observedAt": "2026-11-07", "notes": "Imported; local steel doors from ~₦40,000–50,000 (nigeriansearchguide.com)." },
-    { "id": "door-flush-900", "name": "Flush door 900 × 2100 with hardwood frame", "unit": "nr", "rate": 110000, "source": "https://rates.buildocrat.store/prices/doors-windows/", "observedAt": "2026-11-07", "notes": "Incl. ironmongery; range ₦88,000–132,000." },
-    { "id": "door-flush-750", "name": "Flush door 750 × 2100 with hardwood frame", "unit": "nr", "rate": 110000, "source": "https://rates.buildocrat.store/prices/doors-windows/", "observedAt": "2026-11-07", "notes": "Proxy: no 750 mm price found, uses the 900 mm rate." },
-    { "id": "window-casement-1200", "name": "Aluminium casement window 1200 × 1200", "unit": "nr", "rate": 136800, "source": "https://rates.buildocrat.store/prices/doors-windows/", "observedAt": "2026-11-07", "notes": "1.44 m² × ₦95,000/m² (5 mm glass & net, supply & fix; range ₦75,000–120,000/m²)." },
-    { "id": "window-casement-600", "name": "Aluminium casement window 600 × 600 (toilet)", "unit": "nr", "rate": 34200, "source": "https://rates.buildocrat.store/prices/doors-windows/", "observedAt": "2026-11-07", "notes": "0.36 m² × ₦95,000/m²." }
+    {
+      "id": "cement-50kg",
+      "name": "Cement, OPC 42.5, 50 kg bag",
+      "unit": "bag",
+      "rate": 12000,
+      "source": "https://rates.buildocrat.store/prices/cement/",
+      "observedAt": "2026-11-07",
+      "notes": "Market average; range ₦11,000–13,500. Dangote 3X ~₦12,500."
+    },
+    {
+      "id": "sand-sharp",
+      "name": "Sharp sand",
+      "unit": "t",
+      "rate": 6500,
+      "source": "https://rates.buildocrat.store/prices/sand/",
+      "observedAt": "2026-11-07",
+      "notes": "Range ₦4,500–9,000/t; a 20 t tipper load ~₦130,000."
+    },
+    {
+      "id": "sand-plaster",
+      "name": "Plaster (soft) sand",
+      "unit": "t",
+      "rate": 7000,
+      "source": "https://rates.buildocrat.store/prices/sand/",
+      "observedAt": "2026-11-07",
+      "notes": "Low confidence at source; range ₦5,600–8,400/t."
+    },
+    {
+      "id": "granite-19mm",
+      "name": "Granite chippings, 3/4\" (19 mm)",
+      "unit": "t",
+      "rate": 9000,
+      "source": "https://www.prioni.com.ng/current-price-of-granite-in-nigeria/",
+      "observedAt": "2026-11-21",
+      "notes": "Abuja ₦8,000–10,000/t per Prioni; that page is several months old. Not on the Buildocrat pages read."
+    },
+    {
+      "id": "block-9in",
+      "name": "9\" (225 mm) hollow sandcrete block",
+      "unit": "nr",
+      "rate": 850,
+      "source": "https://rates.buildocrat.store/prices/blocks/",
+      "observedAt": "2026-11-07",
+      "notes": "Range ₦650–950."
+    },
+    {
+      "id": "block-6in",
+      "name": "6\" (150 mm) hollow sandcrete block",
+      "unit": "nr",
+      "rate": 700,
+      "source": "https://rates.buildocrat.store/prices/blocks/",
+      "observedAt": "2026-11-07",
+      "notes": "Low confidence at source; range ₦560–840."
+    },
+    {
+      "id": "rebar-y12",
+      "name": "Y12 high-yield rebar",
+      "unit": "kg",
+      "rate": 1050,
+      "source": "https://rates.buildocrat.store/prices/iron-rods/",
+      "observedAt": "2026-11-07",
+      "notes": "₦1,050,000/t for 12–16 mm (range ₦950k–1.15m); ~₦11,189 per 12 m length."
+    },
+    {
+      "id": "rebar-y8",
+      "name": "Y8 rebar (links)",
+      "unit": "kg",
+      "rate": 1100,
+      "source": "https://rates.buildocrat.store/prices/iron-rods/",
+      "observedAt": "2026-11-07",
+      "notes": "₦1,100,000/t for 8–10 mm; ~₦5,214 per 12 m length."
+    },
+    {
+      "id": "binding-wire",
+      "name": "Binding wire",
+      "unit": "kg",
+      "rate": 1000,
+      "source": "https://keyupro.com/index.php?dispatch=products.view&product_id=292",
+      "observedAt": "2026-11-21",
+      "notes": "₦20,000 per 20 kg roll (one retail listing; others ₦16,500–35,000)."
+    },
+    {
+      "id": "dpm",
+      "name": "Polythene DPM (1000 gauge)",
+      "unit": "m²",
+      "rate": 390,
+      "source": "https://rates.buildocrat.store/",
+      "observedAt": "2026-11-07",
+      "notes": "Buildocrat BoQ rate A08 incl. 150 mm laps; a laid rate, not a material-only price."
+    },
+    {
+      "id": "laterite-fill",
+      "name": "Laterite filling",
+      "unit": "t",
+      "rate": 4250,
+      "source": "https://rates.buildocrat.store/prices/sand/",
+      "observedAt": "2026-11-07",
+      "notes": "Low confidence at source; ~₦85,000 per 20 t load."
+    },
+    {
+      "id": "roofing-longspan",
+      "name": "Long-span aluminium sheet 0.55 mm (Grade A)",
+      "unit": "m²",
+      "rate": 8100,
+      "source": "https://rates.buildocrat.store/prices/roofing-sheets/",
+      "observedAt": "2026-11-07",
+      "notes": "Market grade; caliper (industrial) grade ~₦13,200/m²."
+    },
+    {
+      "id": "timber-2x4",
+      "name": "2\"×4\" × 12 ft hardwood",
+      "unit": "piece",
+      "rate": 4800,
+      "source": "https://rates.buildocrat.store/prices/timber/",
+      "observedAt": "2026-11-07",
+      "notes": "Low confidence at source (₦3,840–5,760). Lagos guides quote ₦1,500–3,800 for gmelina/softwood."
+    },
+    {
+      "id": "timber-2x3",
+      "name": "2\"×3\" × 12 ft hardwood",
+      "unit": "piece",
+      "rate": 3500,
+      "source": "https://rates.buildocrat.store/prices/timber/",
+      "observedAt": "2026-11-07",
+      "notes": "Low confidence at source (₦2,800–4,200)."
+    },
+    {
+      "id": "fascia-1x10",
+      "name": "1\" fascia board × 12 ft",
+      "unit": "piece",
+      "rate": 6500,
+      "source": "https://rates.buildocrat.store/prices/timber/",
+      "observedAt": "2026-11-07",
+      "notes": "Proxy: 1\"×12\" plank rate; no fascia-board price found."
+    },
+    {
+      "id": "ceiling-pvc",
+      "name": "PVC ceiling panels",
+      "unit": "m²",
+      "rate": 3500,
+      "source": "https://nigeriabuildingcost.ng/pop-ceiling-calculator",
+      "observedAt": "2026-11-21",
+      "notes": "₦2,500–4,500/m² installed. Buildocrat's PVC ceiling on 2×2 frame is ~₦8,736/m² incl. framing."
+    },
+    {
+      "id": "door-entrance-steel",
+      "name": "Steel security entrance door 1200 × 2100",
+      "unit": "nr",
+      "rate": 420000,
+      "source": "https://rates.buildocrat.store/prices/doors-windows/",
+      "observedAt": "2026-11-07",
+      "notes": "Imported; local steel doors from ~₦40,000–50,000 (nigeriansearchguide.com)."
+    },
+    {
+      "id": "door-flush-900",
+      "name": "Flush door 900 × 2100 with hardwood frame",
+      "unit": "nr",
+      "rate": 110000,
+      "source": "https://rates.buildocrat.store/prices/doors-windows/",
+      "observedAt": "2026-11-07",
+      "notes": "Incl. ironmongery; range ₦88,000–132,000."
+    },
+    {
+      "id": "door-flush-750",
+      "name": "Flush door 750 × 2100 with hardwood frame",
+      "unit": "nr",
+      "rate": 110000,
+      "source": "https://rates.buildocrat.store/prices/doors-windows/",
+      "observedAt": "2026-11-07",
+      "notes": "Proxy: no 750 mm price found, uses the 900 mm rate."
+    },
+    {
+      "id": "window-casement-1200",
+      "name": "Aluminium casement window 1200 × 1200",
+      "unit": "nr",
+      "rate": 136800,
+      "source": "https://rates.buildocrat.store/prices/doors-windows/",
+      "observedAt": "2026-11-07",
+      "notes": "1.44 m² × ₦95,000/m² (5 mm glass & net, supply & fix; range ₦75,000–120,000/m²)."
+    },
+    {
+      "id": "window-casement-600",
+      "name": "Aluminium casement window 600 × 600 (toilet)",
+      "unit": "nr",
+      "rate": 34200,
+      "source": "https://rates.buildocrat.store/prices/doors-windows/",
+      "observedAt": "2026-11-07",
+      "notes": "0.36 m² × ₦95,000/m²."
+    },
+    {
+      "id": "door-panel-hardwood",
+      "name": "Hardwood panel door 900 × 2100 with frame",
+      "unit": "nr",
+      "rate": 260000,
+      "source": "https://rates.buildocrat.store/prices/doors-windows/",
+      "observedAt": "2026-11-07",
+      "notes": "Supply; range ₦208,000–312,000. Low confidence at source."
+    },
+    {
+      "id": "door-steel-local",
+      "name": "Local steel security door 900 × 2100",
+      "unit": "nr",
+      "rate": 45000,
+      "source": "https://nigeriansearchguide.com/current-prices-of-doors-in-nigeria/",
+      "observedAt": "2026-11-21",
+      "notes": "Locally fabricated; ₦30,000–50,000 for 3–4 ft (2026 guide, undated within the year)."
+    },
+    {
+      "id": "window-sliding-1200",
+      "name": "Aluminium sliding window 1200 × 1200",
+      "unit": "nr",
+      "rate": 115200,
+      "source": "https://rates.buildocrat.store/prices/doors-windows/",
+      "observedAt": "2026-11-07",
+      "notes": "1.44 m² × ₦80,000/m² (supply & fix; range ₦64,000–96,000/m²)."
+    },
+    {
+      "id": "window-casement-1500",
+      "name": "Aluminium casement window 1500 × 1200",
+      "unit": "nr",
+      "rate": 171000,
+      "source": "https://rates.buildocrat.store/prices/doors-windows/",
+      "observedAt": "2026-11-07",
+      "notes": "1.8 m² × ₦95,000/m²."
+    },
+    {
+      "id": "window-sliding-1500",
+      "name": "Aluminium sliding window 1500 × 1200",
+      "unit": "nr",
+      "rate": 144000,
+      "source": "https://rates.buildocrat.store/prices/doors-windows/",
+      "observedAt": "2026-11-07",
+      "notes": "1.8 m² × ₦80,000/m²."
+    }
   ],
   "openingSpecs": [
-    { "id": "door-entrance-steel", "kind": "door", "name": "Steel security entrance door 1200 × 2100", "width": 1200, "height": 2100, "sill": 0, "priceItemId": "door-entrance-steel" },
-    { "id": "door-flush-900", "kind": "door", "name": "Flush door 900 × 2100", "width": 900, "height": 2100, "sill": 0, "priceItemId": "door-flush-900" },
-    { "id": "door-flush-750", "kind": "door", "name": "Flush door 750 × 2100 (toilet)", "width": 750, "height": 2100, "sill": 0, "priceItemId": "door-flush-750" },
-    { "id": "window-casement-1200", "kind": "window", "name": "Casement window 1200 × 1200", "width": 1200, "height": 1200, "sill": 900, "priceItemId": "window-casement-1200" },
-    { "id": "window-casement-600", "kind": "window", "name": "Casement window 600 × 600", "width": 600, "height": 600, "sill": 1500, "priceItemId": "window-casement-600" }
+    {
+      "id": "door-entrance-steel",
+      "kind": "door",
+      "name": "Steel security entrance door 1200 × 2100",
+      "width": 1200,
+      "height": 2100,
+      "sill": 0,
+      "priceItemId": "door-entrance-steel",
+      "style": "steel",
+      "entrance": true,
+      "autoDetect": true
+    },
+    {
+      "id": "door-flush-900",
+      "kind": "door",
+      "name": "Flush door 900 × 2100",
+      "width": 900,
+      "height": 2100,
+      "sill": 0,
+      "priceItemId": "door-flush-900",
+      "style": "flush",
+      "entrance": false,
+      "autoDetect": true
+    },
+    {
+      "id": "door-flush-750",
+      "kind": "door",
+      "name": "Flush door 750 × 2100 (toilet)",
+      "width": 750,
+      "height": 2100,
+      "sill": 0,
+      "priceItemId": "door-flush-750",
+      "style": "flush",
+      "entrance": false,
+      "autoDetect": true
+    },
+    {
+      "id": "window-casement-1200",
+      "kind": "window",
+      "name": "Casement window 1200 × 1200",
+      "width": 1200,
+      "height": 1200,
+      "sill": 900,
+      "priceItemId": "window-casement-1200",
+      "style": "casement",
+      "entrance": false,
+      "autoDetect": true
+    },
+    {
+      "id": "window-casement-600",
+      "kind": "window",
+      "name": "Casement window 600 × 600",
+      "width": 600,
+      "height": 600,
+      "sill": 1500,
+      "priceItemId": "window-casement-600",
+      "style": "casement",
+      "entrance": false,
+      "autoDetect": true
+    },
+    {
+      "id": "door-panel-hardwood",
+      "kind": "door",
+      "name": "Hardwood panel door 900 × 2100",
+      "width": 900,
+      "height": 2100,
+      "sill": 0,
+      "priceItemId": "door-panel-hardwood",
+      "style": "panel",
+      "entrance": false,
+      "autoDetect": false
+    },
+    {
+      "id": "door-steel-local",
+      "kind": "door",
+      "name": "Local steel security door 900 × 2100",
+      "width": 900,
+      "height": 2100,
+      "sill": 0,
+      "priceItemId": "door-steel-local",
+      "style": "steel",
+      "entrance": false,
+      "autoDetect": false
+    },
+    {
+      "id": "window-sliding-1200",
+      "kind": "window",
+      "name": "Sliding window 1200 × 1200",
+      "width": 1200,
+      "height": 1200,
+      "sill": 900,
+      "priceItemId": "window-sliding-1200",
+      "style": "sliding",
+      "entrance": false,
+      "autoDetect": false
+    },
+    {
+      "id": "window-casement-1500",
+      "kind": "window",
+      "name": "Casement window 1500 × 1200",
+      "width": 1500,
+      "height": 1200,
+      "sill": 900,
+      "priceItemId": "window-casement-1500",
+      "style": "casement",
+      "entrance": false,
+      "autoDetect": false
+    },
+    {
+      "id": "window-sliding-1500",
+      "kind": "window",
+      "name": "Sliding window 1500 × 1200",
+      "width": 1500,
+      "height": 1200,
+      "sill": 900,
+      "priceItemId": "window-sliding-1500",
+      "style": "sliding",
+      "entrance": false,
+      "autoDetect": false
+    }
   ]
 }

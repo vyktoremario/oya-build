@@ -31,7 +31,7 @@ mkdirSync(recDir, { recursive: true });
 
 /**
  * eval/cases: committed synthetic cases, recordings in eval/recordings (replayed in CI).
- * eval/cases-local: real sketches we may not redistribute (git-ignored); their recordings stay beside them.
+ * eval/cases-local: optional cases that can't be redistributed (git-ignored); recordings stay beside them.
  */
 const sources = [
   { dir: join(root, "cases"), recording: (id: string) => join(recDir, `${id}.json`) },
@@ -154,8 +154,7 @@ if (!only && !process.env.CI) {
 
 const baselinePath = join(root, "baseline.json");
 if (writeBaseline) {
-  // Only the committed synthetic categories: CI can't replay the local real sketches.
-  writeFileSync(baselinePath, JSON.stringify({ categories: categories.filter((c) => c.name.startsWith("synthetic")) }, null, 1));
+  writeFileSync(baselinePath, JSON.stringify({ categories }, null, 1));
   console.log("baseline written");
 } else if (!live && !only && existsSync(baselinePath)) {
   // CI gate: replaying the same recordings must not get worse (post-processing or scoring regressions).
