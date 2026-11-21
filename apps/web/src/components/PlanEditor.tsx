@@ -100,8 +100,23 @@ export function PlanEditor() {
   const [view, setView] = useState<View>({ x: -2000, y: -2000, w: 16000, h: 12000 });
   const [drag, setDrag] = useState<Drag>(null);
   const [cursor, setCursor] = useState<Vec2 | null>(null);
-  const [chainStart, setChainStart] = useState<Vec2 | null>(null);
-  const [scaleStart, setScaleStart] = useState<Vec2 | null>(null);
+  // In-progress clicks belong to the tool that made them, so switching tools drops them.
+  const [chain, setChain] = useState<{ tool: string; p: Vec2 } | null>(null);
+  const [scaleAnchor, setScaleAnchor] = useState<{ tool: string; p: Vec2 } | null>(null);
+  const chainStart = chain?.tool === tool ? chain.p : null;
+  const scaleStart = scaleAnchor?.tool === tool ? scaleAnchor.p : null;
+  const setChainStart = (p: Vec2 | null) => setChain(p ? { tool, p } : null);
+  const setScaleStart = (p: Vec2 | null) => setScaleAnchor(p ? { tool, p } : null);
+  const [pane, setPane] = useState({ w: 900, h: 700 });
+
+  // Keep strokes and text a constant size on screen, whatever the pane width.
+  useEffect(() => {
+    const el = svgRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(() => setPane({ w: Math.max(200, el.clientWidth), h: Math.max(200, el.clientHeight) }));
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
 
   const ix = useMemo(() => indexPlan(plan), [plan]);
   const topo = useMemo(() => topology(plan, ix), [plan, ix]);
@@ -113,11 +128,6 @@ export function PlanEditor() {
     const aspect = el ? el.clientWidth / Math.max(1, el.clientHeight) : 4 / 3;
     setView(fitView(useStore.getState().plan, aspect || 4 / 3));
   }, [loadId]);
-
-  useEffect(() => {
-    setChainStart(null);
-    setScaleStart(null);
-  }, [tool]);
 
   const toPlan = useCallback((e: { clientX: number; clientY: number }): Vec2 => {
     const svg = svgRef.current!;
@@ -161,8 +171,8 @@ export function PlanEditor() {
         return;
       }
       if (e.key === "Escape") {
-        setChainStart(null);
-        setScaleStart(null);
+        setChain(null);
+        setScaleAnchor(null);
         s.select(null);
         if (s.tool !== "select") s.setTool("select");
       }
@@ -291,7 +301,8 @@ export function PlanEditor() {
     setDrag(d);
   };
 
-  const px = view.w / 900; // ~1 screen pixel in mm at typical widths
+  // One screen pixel in plan millimetres (viewBox "meet" scales by the tighter axis).
+  const px = Math.max(view.w / pane.w, view.h / pane.h);
   const wallPolys = plan.walls.map((w) => {
     const a = ix.nodes.get(w.a)!;
     const b = ix.nodes.get(w.b)!;
@@ -404,16 +415,24 @@ export function PlanEditor() {
           );
         })}
 
-        {topo.rooms.map((r) => (
-          <g key={`t-${r.id}`} pointerEvents="none" fontFamily="var(--font-sans)">
-            <text x={r.centre.x} y={r.centre.y} textAnchor="middle" fontSize={px * 13} fontWeight={600} fill="var(--ink)">
-              {r.name}
-            </text>
-            <text x={r.centre.x} y={r.centre.y + px * 16} textAnchor="middle" fontSize={px * 11} fill="var(--muted)">
-              {(r.clearArea / 1e6).toFixed(1)} m²
-            </text>
-          </g>
-        ))}
+        {topo.rooms.map((r) => {
+          // Shrink names to fit narrow rooms; drop the area line when it would be unreadable.
+          const xs = r.clearPolygon.map((p) => p.x);
+          const roomPx = (Math.max(...xs) - Math.min(...xs)) / px;
+          const font = Math.max(7, Math.min(13, roomPx / (r.name.length * 0.62)));
+          return (
+            <g key={`t-${r.id}`} pointerEvents="none" fontFamily="var(--font-sans)">
+              <text x={r.centre.x} y={r.centre.y} textAnchor="middle" fontSize={px * font} fontWeight={600} fill="var(--ink)">
+                {r.name}
+              </text>
+              {font >= 9 && (
+                <text x={r.centre.x} y={r.centre.y + px * (font + 3)} textAnchor="middle" fontSize={px * (font - 2)} fill="var(--muted)">
+                  {(r.clearArea / 1e6).toFixed(1)} m²
+                </text>
+              )}
+            </g>
+          );
+        })}
 
         {/* Label drag handles (labels that are inside rooms are drawn as room names above). */}
         {tool === "select" &&

@@ -56,8 +56,7 @@ function ViewControls() {
   const walk = useStore((s) => s.walk);
   const showRoof = useStore((s) => s.showRoof);
   const set = useStore((s) => s.set);
-  const [touch, setTouch] = useState(false);
-  useEffect(() => setTouch(window.matchMedia("(pointer: coarse)").matches), []);
+  const [touch] = useState(() => window.matchMedia("(pointer: coarse)").matches);
   return (
     <div className="absolute right-2 top-2 z-10 flex gap-1 rounded-lg bg-white/90 p-1 text-xs shadow-sm">
       <button onClick={() => set({ walk: false })} aria-pressed={!walk} className={`rounded px-2 py-1 ${!walk ? "bg-[var(--ink)] text-white" : ""}`}>
@@ -75,39 +74,33 @@ function ViewControls() {
   );
 }
 
-export default function Workspace() {
+/** Load the initial plan from a share link, the sample, or this browser's last plan. Runs once, before the first render. */
+export function initFromLocation(): { openUpload: boolean } {
+  const { load } = useStore.getState();
+  const params = new URLSearchParams(location.search);
+  const shared = planFromHash(location.hash);
+  if (shared) {
+    load(shared);
+    history.replaceState(null, "", location.pathname);
+    return { openUpload: false };
+  }
+  const local = params.has("sample") ? null : loadLocalPlan();
+  if (local && local.walls.length) load(local);
+  else {
+    const s = loadSample();
+    load(s.plan, { image: s.image, flags: s.flags, extraction: s.extraction });
+  }
+  return { openUpload: params.has("upload") };
+}
+
+export default function Workspace({ openUpload = false }: { openUpload?: boolean }) {
   const plan = useStore((s) => s.plan);
-  const load = useStore((s) => s.load);
-  const [dialog, setDialog] = useState(false);
+  const [dialog, setDialog] = useState(openUpload);
   const [tab, setTab] = useState<"plan" | "3d" | "cost">("plan");
-  const [ready, setReady] = useState(false);
-
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
-    const shared = planFromHash(location.hash);
-    if (shared) {
-      load(shared);
-      history.replaceState(null, "", location.pathname);
-    } else if (params.has("sample")) {
-      const s = loadSample();
-      load(s.plan, { image: s.image, flags: s.flags, extraction: s.extraction });
-    } else {
-      const local = loadLocalPlan();
-      if (local && local.walls.length) load(local);
-      else {
-        const s = loadSample();
-        load(s.plan, { image: s.image, flags: s.flags, extraction: s.extraction });
-      }
-      if (params.has("upload")) setDialog(true);
-    }
-    setReady(true);
-  }, [load]);
-
-  useEffect(() => {
-    if (!ready) return;
     const t = setTimeout(() => savePlanLocally(plan), 400);
     return () => clearTimeout(t);
-  }, [plan, ready]);
+  }, [plan]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -140,7 +133,7 @@ export default function Workspace() {
           <Inspector />
         </section>
         <section className={`${pane("3d")} relative min-h-0 border-r border-[var(--line)]`} aria-label="3D model">
-          {ready && <Scene3D />}
+          <Scene3D />
           <ViewControls />
         </section>
         <aside className={`${pane("cost")} min-h-0 flex-col bg-white`} aria-label="Bill of quantities">

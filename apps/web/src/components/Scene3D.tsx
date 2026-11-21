@@ -247,7 +247,7 @@ function Walker({ plan, boxes }: { plan: Plan; boxes: WallBox[] }) {
 function Rig({ plan }: { plan: Plan }) {
   const walk = useStore((s) => s.walk);
   const loadId = useStore((s) => s.loadId);
-  const { camera } = useThree();
+  const { camera, size: viewport } = useThree();
   const controls = useRef<React.ComponentRef<typeof OrbitControls>>(null);
   const target = useMemo(() => {
     if (!plan.nodes.length) return new THREE.Vector3();
@@ -260,15 +260,21 @@ function Rig({ plan }: { plan: Plan }) {
     if (walk || !plan.nodes.length) return;
     const bb = boundingBox(plan.nodes);
     const size = Math.max(M(bb.maxX - bb.minX), M(bb.maxY - bb.minY), 6);
-    camera.position.set(target.x + size * 0.55, size * 0.95, target.z + size * 1.05);
+    // Fit the building in whichever field of view is narrower (the pane is often portrait).
+    const vfov = ((camera as THREE.PerspectiveCamera).fov * Math.PI) / 180;
+    const aspect = viewport.width / Math.max(1, viewport.height);
+    const hfov = 2 * Math.atan(Math.tan(vfov / 2) * aspect);
+    const dist = (size * 1.25) / (2 * Math.tan(Math.min(vfov, hfov) / 2));
+    const dir = new THREE.Vector3(0.45, 0.8, 0.95).normalize();
+    camera.position.set(target.x + dir.x * dist, dir.y * dist, target.z + dir.z * dist);
     camera.lookAt(target);
     controls.current?.target.copy(target);
     controls.current?.update();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [target, walk]);
+  }, [target, walk, viewport.width, viewport.height]);
 
   if (walk) return <Walker plan={plan} boxes={wallBoxes(plan).walls} />;
-  return <OrbitControls ref={controls} makeDefault target={target} maxPolarAngle={Math.PI / 2.05} minDistance={3} maxDistance={80} enableDamping />;
+  return <OrbitControls ref={controls} makeDefault target={target} maxPolarAngle={Math.PI / 2.05} minDistance={3} maxDistance={150} enableDamping />;
 }
 
 export default function Scene3D() {

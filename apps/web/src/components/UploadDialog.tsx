@@ -130,7 +130,7 @@ export function UploadDialog({ onClose }: { onClose: () => void }) {
               <div className="h-full w-1/3 animate-[slide_1.2s_ease-in-out_infinite] rounded bg-[var(--accent)]" />
             </div>
             <p className="text-sm">{STAGES[stage] ?? "Working…"}</p>
-            <p className="text-xs text-[var(--muted)]">{seconds}s · usually 20–90 seconds. You'll check and correct the result next.</p>
+            <p className="text-xs text-[var(--muted)]">{seconds}s · usually 20–90 seconds. You&apos;ll check and correct the result next.</p>
           </div>
         ) : (
           <>
