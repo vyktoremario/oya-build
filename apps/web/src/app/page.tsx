@@ -101,7 +101,7 @@ export default function Home() {
                   </tbody>
                 </table>
               </div>
-              <p className="mt-2 text-xs text-[var(--muted)]">Medians per category. Small samples: read them as a direction, not a guarantee. Not measured: error against a real QS bill or a real build cost.</p>
+              <p className="mt-2 text-xs text-[var(--muted)]">Medians per category. The synthetic plans are drawn by our own renderer and are much easier than real drawings; the real sketches are the number to watch. Small samples: read them as a direction, not a guarantee. Not measured: error against a real QS bill or a real build cost.</p>
             </>
           ) : (
             <p className="mt-1.5 text-sm text-[var(--ink-soft)]">Not measured yet. Numbers appear here once the evaluation set has been run.</p>
