@@ -1,6 +1,18 @@
 {
  "categories": [
   {
+   "name": "real-sketch",
+   "n": 3,
+   "wallF1": 0.7718120805369126,
+   "openingF1": 0.7096774193548386,
+   "scaleErrorPct": null,
+   "areaErrorPct": 4.521499945230819,
+   "estimateErrorPct": 6.384359054277278,
+   "estimateErrorMaxPct": 6.684191012533419,
+   "costUsd": 0.089632,
+   "latencyS": 31.816
+  },
+  {
    "name": "synthetic-clean",
    "n": 8,
    "wallF1": 1,

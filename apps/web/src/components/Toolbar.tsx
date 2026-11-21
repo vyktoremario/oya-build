@@ -21,6 +21,8 @@ export function Toolbar({ onNew }: { onNew: () => void }) {
   const hasImage = useStore((s) => !!s.image);
   const showImage = useStore((s) => s.showImage);
   const name = useStore((s) => s.plan.name);
+  const showPlanPane = useStore((s) => s.showPlanPane);
+  const showCostPane = useStore((s) => s.showCostPane);
   const { setTool, undo, redo, set } = useStore.getState();
   const [copied, setCopied] = useState(false);
 
@@ -67,6 +69,14 @@ export function Toolbar({ onNew }: { onNew: () => void }) {
         )}
       </div>
       <div className="ml-auto flex items-center gap-1">
+        <div className="mr-1 hidden items-center gap-1 lg:flex" aria-label="Panels">
+          <button onClick={() => set({ showPlanPane: !showPlanPane })} aria-pressed={showPlanPane} className={`rounded-md px-2 py-1 text-xs ${showPlanPane ? "bg-[var(--hover)]" : "text-[var(--muted)]"}`} title="Show or hide the 2D plan">
+            Plan
+          </button>
+          <button onClick={() => set({ showCostPane: !showCostPane })} aria-pressed={showCostPane} className={`rounded-md px-2 py-1 text-xs ${showCostPane ? "bg-[var(--hover)]" : "text-[var(--muted)]"}`} title="Show or hide the bill of quantities">
+            Cost
+          </button>
+        </div>
         <button onClick={share} className="rounded-md px-2 py-1 text-xs hover:bg-[var(--hover)]" title="Copy a link that contains this plan">
           {copied ? "Link copied" : "Share link"}
         </button>

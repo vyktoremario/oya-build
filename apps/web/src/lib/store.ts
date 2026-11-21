@@ -27,6 +27,9 @@ interface State {
   tool: Tool;
   walk: boolean;
   showRoof: boolean;
+  /** Desktop panes; the 3D view always shows. */
+  showPlanPane: boolean;
+  showCostPane: boolean;
   /** Bumps when a new plan is loaded, so the 3D view can replay its intro. */
   loadId: number;
 
@@ -39,7 +42,7 @@ interface State {
   redo: () => void;
   select: (s: Selection) => void;
   setTool: (t: Tool) => void;
-  set: (partial: Partial<Pick<State, "walk" | "showRoof" | "showImage" | "flags">>) => void;
+  set: (partial: Partial<Pick<State, "walk" | "showRoof" | "showImage" | "flags" | "showPlanPane" | "showCostPane">>) => void;
 }
 
 const HISTORY_LIMIT = 100;
@@ -57,6 +60,8 @@ export const useStore = create<State>((set, get) => ({
   tool: "select",
   walk: false,
   showRoof: true,
+  showPlanPane: true,
+  showCostPane: true,
   loadId: 0,
 
   load: (plan, extras = {}) =>

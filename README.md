@@ -9,6 +9,11 @@ and the 3D model and the cost update together.
 
 <!-- demo:start -->
 **Live: [oya-build.vercel.app](https://oya-build.vercel.app)**. Try **Build the sample**, drag a wall, then **Walk**.
+
+![Sketch to 3D to a Naira estimate: the sample loads, a wall is dragged and the total updates, then a walk in through the front door](docs/demo.gif)
+
+<sub>Recorded with `pnpm --filter web demo:gif` against a production build. The sample replays a real recorded
+extraction, including its one miss (a short corridor wall, highlighted in amber for you to draw in).</sub>
 <!-- demo:end -->
 
 ## The 15-second demo
@@ -16,7 +21,10 @@ and the 3D model and the cost update together.
 1. **Build the sample**: a hand-drawn three-bedroom bungalow sketch.
 2. The extracted plan appears over the photo, walls rise in 3D, and the BoQ counts up to the total.
 3. Drag a wall: the 3D model and the total move together (the change is shown as `+₦…`/`−₦…`).
-4. **Walk**: first-person view from the front door (WASD/arrow keys).
+4. **Walk**: first-person view from the front door (WASD/arrow keys). **Full view** hides the side panels;
+   **Style** changes roof sheet colour, wall paint and floor finish (cosmetic only).
+5. Select a door or window to change its type (flush, hardwood panel or steel doors; casement or sliding
+   windows). Those are priced, and "Use this for all similar" applies it across the plan.
 
 ## How it works
 
@@ -85,11 +93,11 @@ What these numbers are and aren't:
 - The 16 synthetic plans (8 layouts × clean/sketch) are drawn by [our own renderer](eval/src/render.ts).
   They are far easier than real drawings, which is why they score near-perfectly. Don't read them as
   real-world accuracy.
-- The 3 real sketches are phone photos of drawings in different styles (marker sketch with
-  furniture, architect's concept sketch, pencil measured drawing). Their true plans were entered by hand
-  from the written dimensions ([eval/src/real-cases.ts](eval/src/real-cases.ts)), ±300 mm where a position
-  isn't dimensioned. The images aren't committed because they aren't ours to redistribute, so CI only
-  replays the synthetic set.
+- The 3 real sketches are photos of drawings in different styles (marker sketch with furniture,
+  architect's concept sketch, pencil measured drawing), from Unsplash under the
+  [Unsplash License](https://unsplash.com/license). Their true plans were entered by hand from the
+  written dimensions ([eval/src/real-cases.ts](eval/src/real-cases.ts)), ±300 mm where a position isn't
+  dimensioned. CI replays all 19 recorded extractions.
 - The evaluation set guided two fixes to the clean-up code: joining hand-drawn corners that miss, and
   treating only one external door as the steel entrance door. Those fixes are covered by unit tests,
   but the same cases then measured them, so a fresh set would be a fairer test.

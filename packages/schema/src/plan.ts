@@ -129,6 +129,14 @@ export const PlanSourceSchema = z.object({
 });
 export type PlanSource = z.infer<typeof PlanSourceSchema>;
 
+/** Purely visual choices: they change the 3D model, never the estimate. */
+export const AppearanceSchema = z.object({
+  roofColor: z.string().default("#8e2f2a"),
+  wallColor: z.string().default("#efe8da"),
+  floor: z.enum(["tiles", "screed"]).default("tiles"),
+});
+export type Appearance = z.infer<typeof AppearanceSchema>;
+
 export const PlanSchema = z.object({
   version: z.literal(1),
   name: z.string(),
@@ -140,5 +148,6 @@ export const PlanSchema = z.object({
   labels: z.array(RoomLabelSchema),
   /** Price overrides keyed by price-book item id, in NGN per item unit. */
   priceOverrides: z.record(z.string(), z.number().nonnegative()),
+  appearance: AppearanceSchema.default({ roofColor: "#8e2f2a", wallColor: "#efe8da", floor: "tiles" }),
 });
 export type Plan = z.infer<typeof PlanSchema>;

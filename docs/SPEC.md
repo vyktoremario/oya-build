@@ -133,8 +133,8 @@ Nothing in the README is a claimed number unless it came from `pnpm eval` and wa
   per-group error. This measures *extraction-induced* error with the same engine and prices.
 - Cost and latency per extraction (from `usage` and wall clock).
 - *Deferred to v2*: correction effort (editor operations needed to fix a plan).
-- As built, the real sketches are 3 drawings Victor supplied; they are scored locally and not committed
-  (`eval/cases-local/`, git-ignored) because the images may not be ours to redistribute.
+- As built, the real sketches are 3 Unsplash photos Victor supplied (Unsplash License), committed under
+  `eval/cases/real-sketch-N`.
 
 What we **don't** measure in v1, and say so: the error of the engine against a real QS-prepared BoQ
 or a real build cost. If you can get one real QS BoQ for a simple bungalow, it becomes case #1 of

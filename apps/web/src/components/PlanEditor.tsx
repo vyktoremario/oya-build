@@ -364,7 +364,7 @@ export function PlanEditor() {
               key={w.id}
               data-wall={w.id}
               points={points}
-              fill={selected ? "var(--accent)" : flagged.has(w.id) ? "var(--warn)" : w.kind === "external" ? "var(--ink)" : "var(--ink-soft)"}
+              fill={selected ? "var(--accent)" : flagged.has(w.id) || topo.openWallIds.has(w.id) ? "var(--warn)" : w.kind === "external" ? "var(--ink)" : "var(--ink-soft)"}
               stroke={selected ? "var(--accent)" : "none"}
               strokeWidth={px * 2}
               className={tool === "select" ? "cursor-move" : ""}

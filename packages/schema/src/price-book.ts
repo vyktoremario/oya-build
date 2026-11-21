@@ -23,6 +23,12 @@ export const OpeningSpecSchema = z.object({
   sill: z.number().int().nonnegative(),
   /** Price item id for one unit of this opening. */
   priceItemId: z.string(),
+  /** How it's drawn in 3D. */
+  style: z.enum(["flush", "panel", "steel", "casement", "sliding"]).default("flush"),
+  /** Main entrance doors are the ones extraction assigns to the front door. */
+  entrance: z.boolean().default(false),
+  /** Whether extraction may assign it automatically (otherwise it's a user choice in the editor). */
+  autoDetect: z.boolean().default(true),
 });
 export type OpeningSpec = z.infer<typeof OpeningSpecSchema>;
 

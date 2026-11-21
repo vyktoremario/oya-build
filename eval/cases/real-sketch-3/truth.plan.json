@@ -1,0 +1,232 @@
+{
+ "version": 1,
+ "name": "Real sketch 3: measured drawing of one room",
+ "source": {
+  "kind": "sample",
+  "mmPerPx": null,
+  "originX": 0,
+  "originY": 0,
+  "imageWidth": 0,
+  "imageHeight": 0,
+  "scaleSource": "exact"
+ },
+ "params": {
+  "wallHeight": 3000,
+  "lintelLevel": 2100,
+  "lintelDepth": 225,
+  "lintelMainBars": 4,
+  "lintelMainBarDia": 12,
+  "lintelLinkDia": 8,
+  "lintelLinkSpacing": 200,
+  "concreteCover": 25,
+  "foundationWidth": 675,
+  "foundationDepth": 900,
+  "footingThickness": 225,
+  "plinthHeight": 450,
+  "coreFillFraction": 0.5,
+  "slabThickness": 150,
+  "screedThickness": 25,
+  "plasterThickness": 15,
+  "blockLength": 450,
+  "blockHeight": 225,
+  "mortarJoint": 10,
+  "mixFooting": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixLintel": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixSlab": {
+   "cement": 1,
+   "sand": 2,
+   "granite": 4
+  },
+  "mixCoreFill": {
+   "cement": 1,
+   "sand": 3,
+   "granite": 6
+  },
+  "mixMortar": {
+   "cement": 1,
+   "sand": 6,
+   "granite": 0
+  },
+  "mixPlaster": {
+   "cement": 1,
+   "sand": 6,
+   "granite": 0
+  },
+  "mixScreed": {
+   "cement": 1,
+   "sand": 3,
+   "granite": 0
+  },
+  "roofType": "hip",
+  "roofPitchDeg": 25,
+  "roofOverhang": 600,
+  "rafterSpacing": 600,
+  "purlinSpacing": 900,
+  "roofBracingAllowance": 0.3,
+  "waste": {
+   "blocks": 0.05,
+   "cement": 0.05,
+   "sand": 0.1,
+   "granite": 0.05,
+   "rebar": 0.1,
+   "roofing": 0.1,
+   "timber": 0.1,
+   "dpm": 0.15,
+   "fill": 0.25,
+   "ceiling": 0.05
+  },
+  "labourPercent": 0
+ },
+ "nodes": [
+  {
+   "id": "n_mwqdz4vb3d0v7f",
+   "x": 0,
+   "y": 0
+  },
+  {
+   "id": "n_mwqdz4vb3ekl7d",
+   "x": 2080,
+   "y": 0
+  },
+  {
+   "id": "n_mwqdz4vb3gs1bx",
+   "x": 2080,
+   "y": -515
+  },
+  {
+   "id": "n_mwqdz4vb3ij61m",
+   "x": 3025,
+   "y": -515
+  },
+  {
+   "id": "n_mwqdz4vb3kimje",
+   "x": 3025,
+   "y": 3185
+  },
+  {
+   "id": "n_mwqdz4vb3mitxk",
+   "x": 0,
+   "y": 3185
+  },
+  {
+   "id": "n_mwqdz4vb3po4ar",
+   "x": -600,
+   "y": 1390
+  },
+  {
+   "id": "n_mwqdz4vb3q6xqw",
+   "x": 0,
+   "y": 1390
+  }
+ ],
+ "walls": [
+  {
+   "id": "w_mwqdz4vb3fj1d5",
+   "a": "n_mwqdz4vb3d0v7f",
+   "b": "n_mwqdz4vb3ekl7d",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqdz4vb3heh1i",
+   "a": "n_mwqdz4vb3ekl7d",
+   "b": "n_mwqdz4vb3gs1bx",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqdz4vb3jdga5",
+   "a": "n_mwqdz4vb3gs1bx",
+   "b": "n_mwqdz4vb3ij61m",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqdz4vb3l1xwk",
+   "a": "n_mwqdz4vb3ij61m",
+   "b": "n_mwqdz4vb3kimje",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqdz4vb3nyxhb",
+   "a": "n_mwqdz4vb3kimje",
+   "b": "n_mwqdz4vb3mitxk",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqdz4vb3osy42",
+   "a": "n_mwqdz4vb3mitxk",
+   "b": "n_mwqdz4vb3q6xqw",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqdz4vb3r1a5s",
+   "a": "n_mwqdz4vb3q6xqw",
+   "b": "n_mwqdz4vb3d0v7f",
+   "kind": "external",
+   "thickness": 225
+  },
+  {
+   "id": "w_mwqdz4vb3sdl0a",
+   "a": "n_mwqdz4vb3po4ar",
+   "b": "n_mwqdz4vb3q6xqw",
+   "kind": "internal",
+   "thickness": 150
+  }
+ ],
+ "openings": [
+  {
+   "id": "o_mwqdz4vb3trwgc",
+   "wallId": "w_mwqdz4vb3l1xwk",
+   "kind": "window",
+   "offset": 1575,
+   "width": 1200,
+   "height": 1200,
+   "sill": 900,
+   "specId": "window-casement-1200"
+  },
+  {
+   "id": "o_mwqdz4vb3uoai3",
+   "wallId": "w_mwqdz4vb3l1xwk",
+   "kind": "door",
+   "offset": 3075,
+   "width": 900,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-900"
+  },
+  {
+   "id": "o_mwqdz4vb3v8qyv",
+   "wallId": "w_mwqdz4vb3nyxhb",
+   "kind": "door",
+   "offset": 2375,
+   "width": 1200,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-entrance-steel"
+  },
+  {
+   "id": "o_mwqdz4vb3whne2",
+   "wallId": "w_mwqdz4vb3r1a5s",
+   "kind": "door",
+   "offset": 425,
+   "width": 750,
+   "height": 2100,
+   "sill": 0,
+   "specId": "door-flush-750"
+  }
+ ],
+ "labels": [],
+ "priceOverrides": {}
+}

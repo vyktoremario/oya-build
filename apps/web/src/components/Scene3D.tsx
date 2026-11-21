@@ -6,6 +6,7 @@ import { useEffect, useMemo, useRef } from "react";
 import * as THREE from "three";
 import type { Plan } from "@oya/schema";
 import { type WallBox, boundingBox, centroid, indexPlan, roofMesh, topology, wallBoxes } from "@oya/geometry";
+import { DEFAULT_PRICE_BOOK } from "@oya/estimate";
 import { useStore } from "@/lib/store";
 
 const M = (mm: number) => mm / 1000;
@@ -17,14 +18,16 @@ const COLORS = {
   external: new THREE.Color("#efe8da"),
   internal: new THREE.Color("#f6f2ea"),
   selected: new THREE.Color("#e2611b"),
-  slab: "#c9c2b5",
+  slab: "#a9a296",
   ground: "#d9dfcf",
   roof: "#a7b0b8",
   glass: "#8fc1e3",
   door: "#8a5a35",
 };
 
-function Walls({ boxes, selectedWallId, kinds }: { boxes: WallBox[]; selectedWallId: string | null; kinds: Map<string, string> }) {
+function Walls({ boxes, selectedWallId, kinds, wallColor }: { boxes: WallBox[]; selectedWallId: string | null; kinds: Map<string, string>; wallColor: string }) {
+  const ext = useMemo(() => new THREE.Color(wallColor), [wallColor]);
+  const int = useMemo(() => new THREE.Color(wallColor).lerp(new THREE.Color("#ffffff"), 0.45), [wallColor]);
   const group = useRef<THREE.Group>(null);
   const loadId = useStore((s) => s.loadId);
   const start = useRef<number | null>(null);
@@ -51,7 +54,7 @@ function Walls({ boxes, selectedWallId, kinds }: { boxes: WallBox[]; selectedWal
         >
           <boxGeometry args={[M(b.length), M(b.z1 - b.z0), M(b.thickness)]} />
           <meshStandardMaterial
-            color={b.wallId === selectedWallId ? COLORS.selected : kinds.get(b.wallId) === "external" ? COLORS.external : COLORS.internal}
+            color={b.wallId === selectedWallId ? COLORS.selected : kinds.get(b.wallId) === "external" ? ext : int}
             roughness={0.92}
           />
         </mesh>
@@ -60,28 +63,112 @@ function Walls({ boxes, selectedWallId, kinds }: { boxes: WallBox[]; selectedWal
   );
 }
 
+const STYLE_BY_SPEC = new Map(DEFAULT_PRICE_BOOK.openingSpecs.map((o) => [o.id, o.style]));
+const DOOR_COLORS: Record<string, string> = { flush: "#b07a46", panel: "#5e3520", steel: "#3b4148" };
+const FRAME = "#d9dcdf";
+const F = 0.05; // frame member size, m
+
+/** A box in an opening's local frame: x along the wall, y up, z across the wall. */
+function Part({ x, y, z = 0, w, h, d, color, opacity, metal = 0 }: { x: number; y: number; z?: number; w: number; h: number; d: number; color: string; opacity?: number; metal?: number }) {
+  return (
+    <mesh position={[x, y, z]} castShadow={!opacity}>
+      <boxGeometry args={[w, h, d]} />
+      <meshStandardMaterial color={color} roughness={opacity ? 0.05 : 0.6} metalness={metal} transparent={!!opacity} opacity={opacity ?? 1} />
+    </mesh>
+  );
+}
+
 function Openings({ plan }: { plan: Plan }) {
   const { openings } = useMemo(() => wallBoxes(plan), [plan]);
+  const specOf = useMemo(() => new Map(plan.openings.map((o) => [o.id, o.specId])), [plan]);
   return (
     <group>
-      {openings.map((o) =>
-        o.kind === "window" ? (
-          <mesh key={o.openingId} position={[M(o.cx), M((o.z0 + o.z1) / 2), M(o.cy)]} rotation={[0, -o.angle, 0]}>
-            <boxGeometry args={[M(o.width), M(o.z1 - o.z0), 0.02]} />
-            <meshStandardMaterial color={COLORS.glass} transparent opacity={0.45} roughness={0.1} metalness={0.2} />
-          </mesh>
-        ) : (
-          // Door leaf swung open ~75° about its hinge, so walkers can pass.
-          <group key={o.openingId} position={[M(o.cx), 0, M(o.cy)]} rotation={[0, -o.angle, 0]}>
-            <group position={[-M(o.width) / 2, 0, M(o.thickness) / 2]} rotation={[0, -1.3, 0]}>
-              <mesh position={[M(o.width) / 2, M(o.z1) / 2, 0]}>
-                <boxGeometry args={[M(o.width) - 0.02, M(o.z1) - 0.02, 0.04]} />
-                <meshStandardMaterial color={COLORS.door} roughness={0.7} />
-              </mesh>
-            </group>
+      {openings.map((o) => {
+        const style = STYLE_BY_SPEC.get(specOf.get(o.openingId) ?? "") ?? (o.kind === "door" ? "flush" : "casement");
+        const W = M(o.width);
+        const H = M(o.z1 - o.z0);
+        const T = M(o.thickness);
+        const frame = (
+          <>
+            <Part x={-W / 2 + F / 2} y={H / 2} w={F} h={H} d={T * 0.6} color={FRAME} metal={0.3} />
+            <Part x={W / 2 - F / 2} y={H / 2} w={F} h={H} d={T * 0.6} color={FRAME} metal={0.3} />
+            <Part x={0} y={H - F / 2} w={W} h={F} d={T * 0.6} color={FRAME} metal={0.3} />
+            {o.kind === "window" && <Part x={0} y={F / 2} w={W} h={F} d={T * 0.6} color={FRAME} metal={0.3} />}
+          </>
+        );
+        return (
+          <group key={o.openingId} position={[M(o.cx), M(o.z0), M(o.cy)]} rotation={[0, -o.angle, 0]}>
+            {frame}
+            {o.kind === "window" ? (
+              style === "sliding" ? (
+                <>
+                  <Part x={-W / 4 + F / 2} y={H / 2} z={-0.02} w={W / 2} h={H - 2 * F} d={0.015} color={COLORS.glass} opacity={0.4} />
+                  <Part x={W / 4 - F / 2} y={H / 2} z={0.02} w={W / 2} h={H - 2 * F} d={0.015} color={COLORS.glass} opacity={0.4} />
+                  <Part x={0} y={H / 2} z={0.0} w={F * 0.6} h={H - 2 * F} d={0.06} color={FRAME} metal={0.3} />
+                </>
+              ) : (
+                <>
+                  <Part x={0} y={H / 2} w={W - 2 * F} h={H - 2 * F} d={0.015} color={COLORS.glass} opacity={0.4} />
+                  <Part x={0} y={H / 2} w={F * 0.8} h={H - 2 * F} d={0.05} color={FRAME} metal={0.3} />
+                </>
+              )
+            ) : (
+              // Door leaf swung open ~75° about its hinge, so walkers can pass.
+              <group position={[-W / 2 + F, 0, T / 2]} rotation={[0, -1.3, 0]}>
+                <Part x={(W - 2 * F) / 2} y={(H - F) / 2} w={W - 2 * F} h={H - F} d={0.045} color={DOOR_COLORS[style] ?? DOOR_COLORS.flush} metal={style === "steel" ? 0.6 : 0} />
+                {style === "panel" &&
+                  [0.28, 0.72].map((k) => <Part key={k} x={(W - 2 * F) / 2} y={(H - F) * k} z={0.028} w={(W - 2 * F) * 0.7} h={(H - F) * 0.36} d={0.012} color="#4a2918" />)}
+                {style === "steel" &&
+                  [0.2, 0.4, 0.6, 0.8].map((k) => <Part key={k} x={(W - 2 * F) / 2} y={(H - F) * k} z={0.026} w={(W - 2 * F) * 0.85} h={0.02} d={0.01} color="#22262b" metal={0.6} />)}
+                <Part x={W - 2 * F - 0.08} y={1.0} z={0.04} w={0.12} h={0.02} d={0.03} color="#c9b27a" metal={0.8} />
+              </group>
+            )}
           </group>
-        ),
-      )}
+        );
+      })}
+    </group>
+  );
+}
+
+/** Room floors just above the slab: tiles (with a procedural grid) or plain screed. */
+function Floors({ plan }: { plan: Plan }) {
+  const rooms = useMemo(() => topology(plan).rooms, [plan]);
+  const tiles = plan.appearance.floor === "tiles";
+  const texture = useMemo(() => {
+    if (typeof document === "undefined") return null;
+    const c = document.createElement("canvas");
+    c.width = c.height = 128;
+    const g = c.getContext("2d")!;
+    g.fillStyle = "#e8e2d6";
+    g.fillRect(0, 0, 128, 128);
+    g.strokeStyle = "#c8c0b0";
+    g.lineWidth = 3;
+    g.strokeRect(0, 0, 128, 128);
+    const t = new THREE.CanvasTexture(c);
+    t.wrapS = t.wrapT = THREE.RepeatWrapping;
+    t.colorSpace = THREE.SRGBColorSpace;
+    return t;
+  }, []);
+  return (
+    <group>
+      {rooms.map((r) => {
+        const shape = new THREE.Shape();
+        r.clearPolygon.forEach((p, i) => (i === 0 ? shape.moveTo(M(p.x), -M(p.y)) : shape.lineTo(M(p.x), -M(p.y))));
+        const geo = new THREE.ShapeGeometry(shape);
+        // 600 mm tiles: UVs from metres.
+        const uv = geo.attributes.position!.array as Float32Array;
+        const uvs = new Float32Array((uv.length / 3) * 2);
+        for (let i = 0; i < uv.length / 3; i++) {
+          uvs[i * 2] = uv[i * 3]! / 0.6;
+          uvs[i * 2 + 1] = uv[i * 3 + 1]! / 0.6;
+        }
+        geo.setAttribute("uv", new THREE.BufferAttribute(uvs, 2));
+        return (
+          <mesh key={r.id} geometry={geo} rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.004, 0]} receiveShadow>
+            <meshStandardMaterial color={tiles ? "#ffffff" : "#bdb6aa"} map={tiles ? texture : null} roughness={tiles ? 0.35 : 0.95} />
+          </mesh>
+        );
+      })}
     </group>
   );
 }
@@ -116,11 +203,34 @@ function Roof({ plan }: { plan: Plan }) {
     g.computeVertexNormals();
     return g;
   }, [plan]);
+  const fascia = useMemo(() => {
+    const r = roofMesh(plan);
+    if (!r) return null;
+    const [x0, z, y0, x1, , , , , y1] = r.positions.map(M) as number[];
+    return { x0: x0!, x1: x1!, y0: y0!, y1: y1!, z: z! };
+  }, [plan]);
   if (!geometry || !showRoof) return null;
+  const fasciaParts = fascia
+    ? [
+        { x: (fascia.x0 + fascia.x1) / 2, y: fascia.y0, w: fascia.x1 - fascia.x0, d: 0.03 },
+        { x: (fascia.x0 + fascia.x1) / 2, y: fascia.y1, w: fascia.x1 - fascia.x0, d: 0.03 },
+        { x: fascia.x0, y: (fascia.y0 + fascia.y1) / 2, w: 0.03, d: fascia.y1 - fascia.y0 },
+        { x: fascia.x1, y: (fascia.y0 + fascia.y1) / 2, w: 0.03, d: fascia.y1 - fascia.y0 },
+      ]
+    : [];
   return (
+    <group>
+      {!walk &&
+        fasciaParts.map((f, i) => (
+          <mesh key={i} position={[f.x, fascia!.z - 0.1, f.y]}>
+            <boxGeometry args={[f.w, 0.22, f.d]} />
+            <meshStandardMaterial color="#f4f1ea" roughness={0.8} />
+          </mesh>
+        ))}
     <mesh geometry={geometry}>
-      <meshStandardMaterial color={COLORS.roof} metalness={0.5} roughness={0.45} side={THREE.DoubleSide} transparent={walk} opacity={walk ? 0.35 : 1} />
+      <meshStandardMaterial color={plan.appearance.roofColor} metalness={0.35} roughness={0.5} side={THREE.DoubleSide} transparent={walk} opacity={walk ? 0.35 : 1} flatShading />
     </mesh>
+    </group>
   );
 }
 
@@ -132,7 +242,7 @@ function RoomLabels({ plan }: { plan: Plan }) {
   return (
     <>
       {rooms.map((r) => (
-        <Html key={r.id} position={[M(r.centre.x), walk ? 2.3 : 0.4, M(r.centre.y)]} center distanceFactor={walk ? 6 : 14} zIndexRange={[10, 0]}>
+        <Html key={r.id} position={[M(r.centre.x), walk ? 2.3 : 0.4, M(r.centre.y)]} center distanceFactor={walk ? undefined : 14} zIndexRange={[10, 0]}>
           <div className="pointer-events-none whitespace-nowrap rounded bg-white/85 px-1.5 py-0.5 text-[11px] font-medium text-[var(--ink)] shadow-sm">
             {r.name} · {(r.clearArea / 1e6).toFixed(1)} m²
           </div>
@@ -298,7 +408,8 @@ export default function Scene3D() {
         <group position={[0, 0, 0]}>
           <Slab plan={plan} />
           <group position={[0, M(plan.params.plinthHeight), 0]}>
-            <Walls boxes={walls} selectedWallId={selectedWallId} kinds={kinds} />
+            <Walls boxes={walls} selectedWallId={selectedWallId} kinds={kinds} wallColor={plan.appearance.wallColor} />
+            <Floors plan={plan} />
             <Openings plan={plan} />
             <Roof plan={plan} />
             <RoomLabels plan={plan} />
