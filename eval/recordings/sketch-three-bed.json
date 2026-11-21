@@ -1,0 +1,417 @@
+{
+ "raw": {
+  "imageWidth": 1240,
+  "imageHeight": 930,
+  "drawingType": "hand_sketch",
+  "walls": [
+   {
+    "x1": 210,
+    "y1": 123,
+    "x2": 1045,
+    "y2": 141,
+    "thicknessPx": 10,
+    "kind": "external",
+    "confidence": 0.9
+   },
+   {
+    "x1": 1045,
+    "y1": 141,
+    "x2": 1027,
+    "y2": 800,
+    "thicknessPx": 10,
+    "kind": "external",
+    "confidence": 0.9
+   },
+   {
+    "x1": 1027,
+    "y1": 800,
+    "x2": 197,
+    "y2": 787,
+    "thicknessPx": 10,
+    "kind": "external",
+    "confidence": 0.9
+   },
+   {
+    "x1": 197,
+    "y1": 787,
+    "x2": 210,
+    "y2": 123,
+    "thicknessPx": 10,
+    "kind": "external",
+    "confidence": 0.9
+   },
+   {
+    "x1": 476,
+    "y1": 125,
+    "x2": 472,
+    "y2": 414,
+    "thicknessPx": 8,
+    "kind": "internal",
+    "confidence": 0.85
+   },
+   {
+    "x1": 590,
+    "y1": 127,
+    "x2": 586,
+    "y2": 416,
+    "thicknessPx": 8,
+    "kind": "internal",
+    "confidence": 0.85
+   },
+   {
+    "x1": 816,
+    "y1": 133,
+    "x2": 812,
+    "y2": 424,
+    "thicknessPx": 8,
+    "kind": "internal",
+    "confidence": 0.85
+   },
+   {
+    "x1": 206,
+    "y1": 407,
+    "x2": 1041,
+    "y2": 428,
+    "thicknessPx": 8,
+    "kind": "internal",
+    "confidence": 0.75
+   },
+   {
+    "x1": 467,
+    "y1": 490,
+    "x2": 1040,
+    "y2": 503,
+    "thicknessPx": 8,
+    "kind": "internal",
+    "confidence": 0.75
+   },
+   {
+    "x1": 467,
+    "y1": 414,
+    "x2": 467,
+    "y2": 490,
+    "thicknessPx": 0,
+    "kind": "internal",
+    "confidence": 0.35
+   },
+   {
+    "x1": 655,
+    "y1": 492,
+    "x2": 648,
+    "y2": 795,
+    "thicknessPx": 8,
+    "kind": "internal",
+    "confidence": 0.85
+   },
+   {
+    "x1": 844,
+    "y1": 496,
+    "x2": 838,
+    "y2": 798,
+    "thicknessPx": 8,
+    "kind": "internal",
+    "confidence": 0.85
+   },
+   {
+    "x1": 842,
+    "y1": 650,
+    "x2": 1035,
+    "y2": 657,
+    "thicknessPx": 8,
+    "kind": "internal",
+    "confidence": 0.8
+   }
+  ],
+  "openings": [
+   {
+    "kind": "door",
+    "x": 393,
+    "y": 410,
+    "widthPx": 50,
+    "confidence": 0.8
+   },
+   {
+    "kind": "door",
+    "x": 525,
+    "y": 414,
+    "widthPx": 45,
+    "confidence": 0.8
+   },
+   {
+    "kind": "door",
+    "x": 637,
+    "y": 418,
+    "widthPx": 55,
+    "confidence": 0.8
+   },
+   {
+    "kind": "door",
+    "x": 865,
+    "y": 428,
+    "widthPx": 50,
+    "confidence": 0.8
+   },
+   {
+    "kind": "door",
+    "x": 467,
+    "y": 452,
+    "widthPx": 60,
+    "confidence": 0.45
+   },
+   {
+    "kind": "door",
+    "x": 935,
+    "y": 500,
+    "widthPx": 50,
+    "confidence": 0.75
+   },
+   {
+    "kind": "door",
+    "x": 652,
+    "y": 636,
+    "widthPx": 55,
+    "confidence": 0.8
+   },
+   {
+    "kind": "door",
+    "x": 840,
+    "y": 722,
+    "widthPx": 45,
+    "confidence": 0.75
+   },
+   {
+    "kind": "door",
+    "x": 348,
+    "y": 782,
+    "widthPx": 75,
+    "confidence": 0.85
+   },
+   {
+    "kind": "window",
+    "x": 345,
+    "y": 126,
+    "widthPx": 70,
+    "confidence": 0.55
+   },
+   {
+    "kind": "window",
+    "x": 535,
+    "y": 130,
+    "widthPx": 50,
+    "confidence": 0.5
+   },
+   {
+    "kind": "window",
+    "x": 700,
+    "y": 134,
+    "widthPx": 70,
+    "confidence": 0.5
+   },
+   {
+    "kind": "window",
+    "x": 925,
+    "y": 140,
+    "widthPx": 70,
+    "confidence": 0.5
+   },
+   {
+    "kind": "window",
+    "x": 207,
+    "y": 270,
+    "widthPx": 70,
+    "confidence": 0.5
+   },
+   {
+    "kind": "window",
+    "x": 201,
+    "y": 600,
+    "widthPx": 70,
+    "confidence": 0.5
+   },
+   {
+    "kind": "window",
+    "x": 1040,
+    "y": 290,
+    "widthPx": 70,
+    "confidence": 0.5
+   },
+   {
+    "kind": "window",
+    "x": 1033,
+    "y": 580,
+    "widthPx": 50,
+    "confidence": 0.45
+   },
+   {
+    "kind": "window",
+    "x": 1029,
+    "y": 720,
+    "widthPx": 60,
+    "confidence": 0.45
+   },
+   {
+    "kind": "window",
+    "x": 535,
+    "y": 792,
+    "widthPx": 70,
+    "confidence": 0.5
+   },
+   {
+    "kind": "window",
+    "x": 745,
+    "y": 796,
+    "widthPx": 70,
+    "confidence": 0.5
+   },
+   {
+    "kind": "window",
+    "x": 935,
+    "y": 799,
+    "widthPx": 60,
+    "confidence": 0.4
+   }
+  ],
+  "rooms": [
+   {
+    "name": "Bedroom 1",
+    "x": 343,
+    "y": 262,
+    "confidence": 0.95
+   },
+   {
+    "name": "Bath",
+    "x": 535,
+    "y": 272,
+    "confidence": 0.95
+   },
+   {
+    "name": "Bedroom 2",
+    "x": 694,
+    "y": 273,
+    "confidence": 0.95
+   },
+   {
+    "name": "Bedroom 3",
+    "x": 925,
+    "y": 278,
+    "confidence": 0.95
+   },
+   {
+    "name": "Corridor",
+    "x": 749,
+    "y": 455,
+    "confidence": 0.95
+   },
+   {
+    "name": "Store",
+    "x": 932,
+    "y": 569,
+    "confidence": 0.95
+   },
+   {
+    "name": "Living Room",
+    "x": 364,
+    "y": 610,
+    "confidence": 0.95
+   },
+   {
+    "name": "Kitchen",
+    "x": 744,
+    "y": 628,
+    "confidence": 0.95
+   },
+   {
+    "name": "WC",
+    "x": 930,
+    "y": 716,
+    "confidence": 0.95
+   }
+  ],
+  "dimensions": [
+   {
+    "text": "13200",
+    "valueMm": 13200,
+    "x1": 210,
+    "y1": 30,
+    "x2": 1052,
+    "y2": 47,
+    "confidence": 0.85
+   },
+   {
+    "text": "4200",
+    "valueMm": 4200,
+    "x1": 212,
+    "y1": 75,
+    "x2": 478,
+    "y2": 88,
+    "confidence": 0.8
+   },
+   {
+    "text": "1800",
+    "valueMm": 1800,
+    "x1": 478,
+    "y1": 88,
+    "x2": 590,
+    "y2": 92,
+    "confidence": 0.8
+   },
+   {
+    "text": "3600",
+    "valueMm": 3600,
+    "x1": 590,
+    "y1": 92,
+    "x2": 820,
+    "y2": 97,
+    "confidence": 0.8
+   },
+   {
+    "text": "3600",
+    "valueMm": 3600,
+    "x1": 820,
+    "y1": 97,
+    "x2": 1050,
+    "y2": 101,
+    "confidence": 0.8
+   },
+   {
+    "text": "10500",
+    "valueMm": 10500,
+    "x1": 125,
+    "y1": 118,
+    "x2": 97,
+    "y2": 785,
+    "confidence": 0.8
+   },
+   {
+    "text": "4500",
+    "valueMm": 4500,
+    "x1": 177,
+    "y1": 118,
+    "x2": 160,
+    "y2": 410,
+    "confidence": 0.8
+   },
+   {
+    "text": "6000",
+    "valueMm": 6000,
+    "x1": 160,
+    "y1": 410,
+    "x2": 150,
+    "y2": 782,
+    "confidence": 0.8
+   }
+  ],
+  "notes": [
+   "Hand sketch with double-line walls; lines are skewed slightly and drawn loosely.",
+   "Opening between corridor and living room near x=467 is ambiguous (door arc without clear wall)."
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5 (prompt 2026-11-21.1)",
+  "inputTokens": 3969,
+  "outputTokens": 3492,
+  "costUsd": 0.085716,
+  "latencyMs": 30878,
+  "at": "2026-11-21T12:06:09.233Z"
+ }
+}

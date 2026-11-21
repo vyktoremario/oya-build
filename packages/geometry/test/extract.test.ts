@@ -90,3 +90,28 @@ describe("postProcess", () => {
     expect(r.source.scaleSource).toBe("user");
   });
 });
+
+describe("closeCorners", () => {
+  it("joins sketch corners that stop short or overshoot", async () => {
+    const { closeCorners, topology: topo } = await import("../src");
+    const { makePlan } = await import("./helpers");
+    // A 4 × 3 m box whose corners miss by 150–400 mm, one end overshooting.
+    const p = makePlan(
+      { a: [200, 0], b: [4000, 0], c: [4000, 250], d: [4000, 3000], e: [4350, 3000], f: [0, 3000], g: [0, 2800], h: [0, 150] },
+      [["a", "b"], ["c", "d"], ["e", "f"], ["g", "h"]],
+    );
+    const q = closeCorners(p, 600);
+    expect(topo(q).rooms).toHaveLength(1);
+    expect(q.walls).toHaveLength(4);
+  });
+
+  it("extends a partition that stops short of the wall it points at", async () => {
+    const { closeCorners, normalizePlan, topology: topo } = await import("../src");
+    const { rect } = await import("./helpers");
+    const p = rect(6000, 3000);
+    p.nodes.push({ id: "m1", x: 3000, y: 300 }, { id: "m2", x: 3000, y: 2700 });
+    p.walls.push({ id: "wm", a: "m1", b: "m2", kind: "internal", thickness: 150 });
+    expect(topo(normalizePlan(p, 60)).rooms).toHaveLength(1);
+    expect(topo(closeCorners(p, 600)).rooms).toHaveLength(2);
+  });
+});

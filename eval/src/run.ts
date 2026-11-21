@@ -26,18 +26,27 @@ interface CaseMeta {
   mmPerPx: number | null;
 }
 
-const casesDir = join(root, "cases");
 const recDir = join(root, "recordings");
 mkdirSync(recDir, { recursive: true });
 
-const ids = readdirSync(casesDir)
-  .filter((d) => existsSync(join(casesDir, d, "truth.plan.json")) && (!only || d.includes(only)))
-  .sort();
+/**
+ * eval/cases: committed synthetic cases, recordings in eval/recordings (replayed in CI).
+ * eval/cases-local: real sketches we may not redistribute (git-ignored); their recordings stay beside them.
+ */
+const sources = [
+  { dir: join(root, "cases"), recording: (id: string) => join(recDir, `${id}.json`) },
+  { dir: join(root, "cases-local"), recording: (id: string) => join(root, "cases-local", id, "recording.json") },
+].filter((s) => existsSync(s.dir));
 
-async function record(id: string, meta: CaseMeta): Promise<ExtractionRecording> {
+const cases = sources
+  .flatMap((s) => readdirSync(s.dir).map((id) => ({ id, dir: join(s.dir, id), recording: s.recording(id) })))
+  .filter((c) => existsSync(join(c.dir, "truth.plan.json")) && (!only || c.id.includes(only)))
+  .sort((a, b) => a.id.localeCompare(b.id));
+
+async function record(c: (typeof cases)[number], meta: CaseMeta): Promise<ExtractionRecording> {
   const { extractRaw } = await import("@oya/extract");
-  const img = readdirSync(join(casesDir, id)).find((f) => /^image\.(jpe?g|png)$/.test(f))!;
-  const data = readFileSync(join(casesDir, id, img)).toString("base64");
+  const img = readdirSync(c.dir).find((f) => /^image\.(jpe?g|png)$/.test(f))!;
+  const data = readFileSync(join(c.dir, img)).toString("base64");
   const rec = await extractRaw({
     imageBase64: data,
     mediaType: img.endsWith("png") ? "image/png" : "image/jpeg",
@@ -46,7 +55,7 @@ async function record(id: string, meta: CaseMeta): Promise<ExtractionRecording> 
     model: process.env.OYA_MODEL,
     effort: (process.env.OYA_EFFORT as "low" | "medium" | "high" | "xhigh" | "max" | undefined) ?? undefined,
   });
-  writeFileSync(join(recDir, `${id}.json`), JSON.stringify(rec, null, 1));
+  writeFileSync(c.recording, JSON.stringify(rec, null, 1));
   return rec;
 }
 
@@ -60,17 +69,18 @@ interface Row extends Partial<CaseScore> {
 }
 
 const rows: Row[] = [];
-for (const id of ids) {
-  const meta = JSON.parse(readFileSync(join(casesDir, id, "meta.json"), "utf8")) as CaseMeta;
-  const truth = PlanSchema.parse(JSON.parse(readFileSync(join(casesDir, id, "truth.plan.json"), "utf8")));
+for (const c of cases) {
+  const id = c.id;
+  const meta = JSON.parse(readFileSync(join(c.dir, "meta.json"), "utf8")) as CaseMeta;
+  const truth = PlanSchema.parse(JSON.parse(readFileSync(join(c.dir, "truth.plan.json"), "utf8")));
   let rec: ExtractionRecording | null = null;
   try {
     if (live) {
       process.stdout.write(`extracting ${id}… `);
-      rec = await record(id, meta);
+      rec = await record(c, meta);
       console.log(`${(rec.meta.latencyMs / 1000).toFixed(0)} s, $${rec.meta.costUsd.toFixed(3)}`);
-    } else if (existsSync(join(recDir, `${id}.json`))) {
-      rec = ExtractionRecordingSchema.parse(JSON.parse(readFileSync(join(recDir, `${id}.json`), "utf8")));
+    } else if (existsSync(c.recording)) {
+      rec = ExtractionRecordingSchema.parse(JSON.parse(readFileSync(c.recording, "utf8")));
     }
   } catch (e) {
     console.log(`failed: ${(e as Error).message}`);
@@ -134,7 +144,8 @@ if (!scored.length) {
 }
 
 const result = { ranAt: new Date().toISOString(), mode: live ? "live" : "replay", model: [...new Set(scored.map((r) => r.model))].join(", "), cases: rows, categories };
-if (live && !only) {
+// Replay re-scores recorded outputs with the current post-processing, so it's a valid result too.
+if (!only && !process.env.CI) {
   const resDir = join(root, "results");
   mkdirSync(resDir, { recursive: true });
   writeFileSync(join(resDir, `${result.ranAt.slice(0, 10)}.json`), JSON.stringify(result, null, 1));
@@ -143,7 +154,8 @@ if (live && !only) {
 
 const baselinePath = join(root, "baseline.json");
 if (writeBaseline) {
-  writeFileSync(baselinePath, JSON.stringify({ categories }, null, 1));
+  // Only the committed synthetic categories: CI can't replay the local real sketches.
+  writeFileSync(baselinePath, JSON.stringify({ categories: categories.filter((c) => c.name.startsWith("synthetic")) }, null, 1));
   console.log("baseline written");
 } else if (!live && !only && existsSync(baselinePath)) {
   // CI gate: replaying the same recordings must not get worse (post-processing or scoring regressions).

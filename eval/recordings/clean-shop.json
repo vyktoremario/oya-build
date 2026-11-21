@@ -1,0 +1,190 @@
+{
+ "raw": {
+  "imageWidth": 1240,
+  "imageHeight": 930,
+  "drawingType": "printed_plan",
+  "walls": [
+   {
+    "x1": 356,
+    "y1": 136,
+    "x2": 884,
+    "y2": 136,
+    "thicknessPx": 16,
+    "kind": "external",
+    "confidence": 0.95
+   },
+   {
+    "x1": 884,
+    "y1": 136,
+    "x2": 884,
+    "y2": 794,
+    "thicknessPx": 16,
+    "kind": "external",
+    "confidence": 0.95
+   },
+   {
+    "x1": 884,
+    "y1": 794,
+    "x2": 356,
+    "y2": 794,
+    "thicknessPx": 16,
+    "kind": "external",
+    "confidence": 0.95
+   },
+   {
+    "x1": 356,
+    "y1": 794,
+    "x2": 356,
+    "y2": 136,
+    "thicknessPx": 16,
+    "kind": "external",
+    "confidence": 0.95
+   },
+   {
+    "x1": 356,
+    "y1": 530,
+    "x2": 884,
+    "y2": 530,
+    "thicknessPx": 11,
+    "kind": "internal",
+    "confidence": 0.9
+   },
+   {
+    "x1": 620,
+    "y1": 530,
+    "x2": 620,
+    "y2": 794,
+    "thicknessPx": 11,
+    "kind": "internal",
+    "confidence": 0.9
+   }
+  ],
+  "openings": [
+   {
+    "kind": "door",
+    "x": 620,
+    "y": 136,
+    "widthPx": 88,
+    "confidence": 0.9
+   },
+   {
+    "kind": "window",
+    "x": 466,
+    "y": 136,
+    "widthPx": 88,
+    "confidence": 0.9
+   },
+   {
+    "kind": "window",
+    "x": 773,
+    "y": 136,
+    "widthPx": 88,
+    "confidence": 0.9
+   },
+   {
+    "kind": "door",
+    "x": 488,
+    "y": 530,
+    "widthPx": 66,
+    "confidence": 0.9
+   },
+   {
+    "kind": "door",
+    "x": 751,
+    "y": 530,
+    "widthPx": 66,
+    "confidence": 0.9
+   },
+   {
+    "kind": "window",
+    "x": 356,
+    "y": 662,
+    "widthPx": 44,
+    "confidence": 0.85
+   },
+   {
+    "kind": "window",
+    "x": 884,
+    "y": 662,
+    "widthPx": 88,
+    "confidence": 0.85
+   }
+  ],
+  "rooms": [
+   {
+    "name": "Shop Floor",
+    "x": 620,
+    "y": 328,
+    "confidence": 0.95
+   },
+   {
+    "name": "Store",
+    "x": 488,
+    "y": 657,
+    "confidence": 0.95
+   },
+   {
+    "name": "Office",
+    "x": 751,
+    "y": 657,
+    "confidence": 0.95
+   }
+  ],
+  "dimensions": [
+   {
+    "text": "7200",
+    "valueMm": 7200,
+    "x1": 356,
+    "y1": 41,
+    "x2": 884,
+    "y2": 41,
+    "confidence": 0.9
+   },
+   {
+    "text": "7200",
+    "valueMm": 7200,
+    "x1": 356,
+    "y1": 91,
+    "x2": 884,
+    "y2": 91,
+    "confidence": 0.9
+   },
+   {
+    "text": "9000",
+    "valueMm": 9000,
+    "x1": 262,
+    "y1": 136,
+    "x2": 262,
+    "y2": 794,
+    "confidence": 0.9
+   },
+   {
+    "text": "5400",
+    "valueMm": 5400,
+    "x1": 312,
+    "y1": 136,
+    "x2": 312,
+    "y2": 530,
+    "confidence": 0.9
+   },
+   {
+    "text": "3600",
+    "valueMm": 3600,
+    "x1": 312,
+    "y1": 530,
+    "x2": 312,
+    "y2": 794,
+    "confidence": 0.9
+   }
+  ],
+  "notes": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5 (prompt 2026-11-21.1)",
+  "inputTokens": 3969,
+  "outputTokens": 935,
+  "costUsd": 0.034576,
+  "latencyMs": 7704,
+  "at": "2026-11-21T12:03:05.576Z"
+ }
+}

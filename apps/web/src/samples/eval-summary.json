@@ -1,1 +1,42 @@
-null
+{
+ "ranAt": "2026-11-21T12:10:39.098Z",
+ "model": "claude-opus-5-5 (prompt 2026-11-21.1)",
+ "categories": [
+  {
+   "name": "Real hand sketches (phone photos)",
+   "n": 3,
+   "wallF1": 0.7718120805369126,
+   "openingF1": 0.7096774193548386,
+   "scaleErrorPct": null,
+   "areaErrorPct": 4.521499945230819,
+   "estimateErrorPct": 6.384359054277278,
+   "estimateErrorMaxPct": 6.684191012533419,
+   "costUsd": 0.089632,
+   "latencyS": 31.816
+  },
+  {
+   "name": "Synthetic, printed style",
+   "n": 8,
+   "wallF1": 1,
+   "openingF1": 1,
+   "scaleErrorPct": 0.17997814961761147,
+   "areaErrorPct": 0,
+   "estimateErrorPct": 0.390399264558856,
+   "estimateErrorMaxPct": 6.084754913415938,
+   "costUsd": 0.053236000000000006,
+   "latencyS": 15.1055
+  },
+  {
+   "name": "Synthetic, sketch style",
+   "n": 8,
+   "wallF1": 1,
+   "openingF1": 1,
+   "scaleErrorPct": 0.714750787439766,
+   "areaErrorPct": 0.5309734524654355,
+   "estimateErrorPct": 0.3226030156329836,
+   "estimateErrorMaxPct": 4.6599065148274805,
+   "costUsd": 0.057386,
+   "latencyS": 18.03
+  }
+ ]
+}

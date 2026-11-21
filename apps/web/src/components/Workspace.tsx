@@ -22,6 +22,7 @@ function Flags() {
   const [open, setOpen] = useState(true);
   if (!extraction && flags.length === 0) return null;
   const warn = flags.filter((f) => f.level === "warn");
+  const grouped = [...flags.reduce((m, f) => m.set(f.message, { ...f, count: (m.get(f.message)?.count ?? 0) + 1 }), new Map<string, (typeof flags)[number] & { count: number }>()).values()];
   return (
     <div className="absolute left-2 top-2 z-10 max-w-sm rounded-lg border border-[var(--line)] bg-white/95 text-xs shadow-sm">
       <button className="flex w-full items-center justify-between gap-3 px-3 py-2 text-left" onClick={() => setOpen(!open)}>
@@ -34,9 +35,9 @@ function Flags() {
         <div className="space-y-1.5 border-t border-[var(--line)] px-3 py-2">
           {source.scaleSource === "guess" && <p className="font-medium text-[var(--warn-ink)]">Scale is a guess: use “Set scale” on a line you know.</p>}
           <ul className="max-h-40 space-y-1 overflow-y-auto">
-            {flags.map((f, i) => (
-              <li key={i} className={f.level === "warn" ? "text-[var(--warn-ink)]" : "text-[var(--muted)]"}>
-                {f.message}
+            {grouped.map((f) => (
+              <li key={f.message} className={f.level === "warn" ? "text-[var(--warn-ink)]" : "text-[var(--muted)]"}>
+                {f.count > 1 ? `${f.count} × ${f.message.replace(": check it.", "")} (marked in amber)` : f.message}
               </li>
             ))}
           </ul>

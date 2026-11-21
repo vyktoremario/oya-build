@@ -70,13 +70,29 @@ extraction against them, **before** any human correction:
   (same engine, same prices), so it isolates the error extraction introduces.
 
 <!-- eval:start -->
-Not run yet.
+Run 2026-11-21 · claude-opus-5-5 (prompt 2026-11-21.1) · medians per category, before any human correction.
+
+| Plans | n | Wall F1 | Door/window F1 | Scale error | Floor-area error | Estimate error (median / worst) | Cost per plan | Time per plan |
+|---|---|---|---|---|---|---|---|---|
+| Real hand sketches (phone photos) | 3 | 0.77 | 0.71 | not scored¹ | 4.5% | 6.4% / 6.7% | $0.090 | 32 s |
+| Synthetic, printed style | 8 | 1.00 | 1.00 | 0.2% | 0.0% | 0.4% / 6.1% | $0.053 | 15 s |
+| Synthetic, sketch style | 8 | 1.00 | 1.00 | 0.7% | 0.5% | 0.3% / 4.7% | $0.057 | 18 s |
+
+¹ The true scale of a photographed sketch isn't known exactly, so scale error is only scored on the synthetic plans; its effect still shows in the area and estimate errors.
 <!-- eval:end -->
 
 What these numbers are and aren't:
-- The synthetic plans are drawn by [our own renderer](eval/src/render.ts), clean and sketch-style;
-  they are easier than real phone photos. Real hand-drawn sketches are reported as their own category
-  when present.
+- The 16 synthetic plans (8 layouts × clean/sketch) are drawn by [our own renderer](eval/src/render.ts).
+  They are far easier than real drawings, which is why they score near-perfectly. Don't read them as
+  real-world accuracy.
+- The 3 real sketches are phone photos of drawings in different styles (marker sketch with
+  furniture, architect's concept sketch, pencil measured drawing). Their true plans were entered by hand
+  from the written dimensions ([eval/src/real-cases.ts](eval/src/real-cases.ts)), ±300 mm where a position
+  isn't dimensioned. The images aren't committed because they aren't ours to redistribute, so CI only
+  replays the synthetic set.
+- The evaluation set guided two fixes to the clean-up code: joining hand-drawn corners that miss, and
+  treating only one external door as the steel entrance door. Those fixes are covered by unit tests,
+  but the same cases then measured them, so a fresh set would be a fairer test.
 - Small samples: read them as a direction, not a guarantee.
 - **Not measured**: error against a real QS bill or a real build cost.
 

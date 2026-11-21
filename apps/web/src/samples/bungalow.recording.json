@@ -1,1 +1,387 @@
-null
+{
+ "raw": {
+  "imageWidth": 1240,
+  "imageHeight": 930,
+  "drawingType": "hand_sketch",
+  "walls": [
+   {
+    "x1": 200,
+    "y1": 138,
+    "x2": 1030,
+    "y2": 126,
+    "thicknessPx": 12,
+    "kind": "external",
+    "confidence": 0.9
+   },
+   {
+    "x1": 205,
+    "y1": 138,
+    "x2": 212,
+    "y2": 800,
+    "thicknessPx": 12,
+    "kind": "external",
+    "confidence": 0.9
+   },
+   {
+    "x1": 1030,
+    "y1": 126,
+    "x2": 1040,
+    "y2": 786,
+    "thicknessPx": 12,
+    "kind": "external",
+    "confidence": 0.9
+   },
+   {
+    "x1": 212,
+    "y1": 800,
+    "x2": 1040,
+    "y2": 786,
+    "thicknessPx": 12,
+    "kind": "external",
+    "confidence": 0.9
+   },
+   {
+    "x1": 464,
+    "y1": 134,
+    "x2": 467,
+    "y2": 422,
+    "thicknessPx": 10,
+    "kind": "internal",
+    "confidence": 0.85
+   },
+   {
+    "x1": 577,
+    "y1": 132,
+    "x2": 578,
+    "y2": 418,
+    "thicknessPx": 10,
+    "kind": "internal",
+    "confidence": 0.85
+   },
+   {
+    "x1": 801,
+    "y1": 129,
+    "x2": 804,
+    "y2": 413,
+    "thicknessPx": 10,
+    "kind": "internal",
+    "confidence": 0.85
+   },
+   {
+    "x1": 207,
+    "y1": 426,
+    "x2": 1032,
+    "y2": 409,
+    "thicknessPx": 10,
+    "kind": "internal",
+    "confidence": 0.8
+   },
+   {
+    "x1": 466,
+    "y1": 494,
+    "x2": 1036,
+    "y2": 484,
+    "thicknessPx": 10,
+    "kind": "internal",
+    "confidence": 0.8
+   },
+   {
+    "x1": 658,
+    "y1": 491,
+    "x2": 662,
+    "y2": 797,
+    "thicknessPx": 10,
+    "kind": "internal",
+    "confidence": 0.85
+   },
+   {
+    "x1": 845,
+    "y1": 487,
+    "x2": 852,
+    "y2": 793,
+    "thicknessPx": 10,
+    "kind": "internal",
+    "confidence": 0.85
+   },
+   {
+    "x1": 847,
+    "y1": 637,
+    "x2": 1038,
+    "y2": 633,
+    "thicknessPx": 10,
+    "kind": "internal",
+    "confidence": 0.85
+   }
+  ],
+  "openings": [
+   {
+    "kind": "door",
+    "x": 394,
+    "y": 425,
+    "widthPx": 52,
+    "confidence": 0.8
+   },
+   {
+    "kind": "door",
+    "x": 522,
+    "y": 420,
+    "widthPx": 45,
+    "confidence": 0.8
+   },
+   {
+    "kind": "door",
+    "x": 637,
+    "y": 416,
+    "widthPx": 55,
+    "confidence": 0.8
+   },
+   {
+    "kind": "door",
+    "x": 862,
+    "y": 411,
+    "widthPx": 52,
+    "confidence": 0.8
+   },
+   {
+    "kind": "door",
+    "x": 938,
+    "y": 488,
+    "widthPx": 53,
+    "confidence": 0.75
+   },
+   {
+    "kind": "door",
+    "x": 659,
+    "y": 635,
+    "widthPx": 50,
+    "confidence": 0.75
+   },
+   {
+    "kind": "door",
+    "x": 848,
+    "y": 712,
+    "widthPx": 45,
+    "confidence": 0.75
+   },
+   {
+    "kind": "door",
+    "x": 365,
+    "y": 797,
+    "widthPx": 70,
+    "confidence": 0.8
+   },
+   {
+    "kind": "window",
+    "x": 330,
+    "y": 136,
+    "widthPx": 80,
+    "confidence": 0.6
+   },
+   {
+    "kind": "window",
+    "x": 522,
+    "y": 134,
+    "widthPx": 45,
+    "confidence": 0.5
+   },
+   {
+    "kind": "window",
+    "x": 683,
+    "y": 131,
+    "widthPx": 75,
+    "confidence": 0.6
+   },
+   {
+    "kind": "window",
+    "x": 915,
+    "y": 128,
+    "widthPx": 70,
+    "confidence": 0.6
+   },
+   {
+    "kind": "window",
+    "x": 207,
+    "y": 290,
+    "widthPx": 90,
+    "confidence": 0.6
+   },
+   {
+    "kind": "window",
+    "x": 210,
+    "y": 610,
+    "widthPx": 80,
+    "confidence": 0.55
+   },
+   {
+    "kind": "window",
+    "x": 1033,
+    "y": 265,
+    "widthPx": 80,
+    "confidence": 0.55
+   },
+   {
+    "kind": "window",
+    "x": 1038,
+    "y": 715,
+    "widthPx": 50,
+    "confidence": 0.5
+   },
+   {
+    "kind": "window",
+    "x": 555,
+    "y": 795,
+    "widthPx": 70,
+    "confidence": 0.55
+   },
+   {
+    "kind": "window",
+    "x": 755,
+    "y": 791,
+    "widthPx": 70,
+    "confidence": 0.55
+   }
+  ],
+  "rooms": [
+   {
+    "name": "Bedroom 1",
+    "x": 330,
+    "y": 278,
+    "confidence": 0.95
+   },
+   {
+    "name": "Bath",
+    "x": 517,
+    "y": 272,
+    "confidence": 0.95
+   },
+   {
+    "name": "Bedroom 2",
+    "x": 690,
+    "y": 269,
+    "confidence": 0.95
+   },
+   {
+    "name": "Bedroom 3",
+    "x": 913,
+    "y": 266,
+    "confidence": 0.95
+   },
+   {
+    "name": "Corridor",
+    "x": 748,
+    "y": 445,
+    "confidence": 0.95
+   },
+   {
+    "name": "Store",
+    "x": 941,
+    "y": 555,
+    "confidence": 0.95
+   },
+   {
+    "name": "Living Room",
+    "x": 374,
+    "y": 624,
+    "confidence": 0.95
+   },
+   {
+    "name": "Kitchen",
+    "x": 757,
+    "y": 625,
+    "confidence": 0.95
+   },
+   {
+    "name": "WC",
+    "x": 942,
+    "y": 706,
+    "confidence": 0.95
+   }
+  ],
+  "dimensions": [
+   {
+    "text": "13200",
+    "valueMm": 13200,
+    "x1": 200,
+    "y1": 72,
+    "x2": 1030,
+    "y2": 47,
+    "confidence": 0.85
+   },
+   {
+    "text": "4200",
+    "valueMm": 4200,
+    "x1": 200,
+    "y1": 107,
+    "x2": 464,
+    "y2": 100,
+    "confidence": 0.8
+   },
+   {
+    "text": "1800",
+    "valueMm": 1800,
+    "x1": 464,
+    "y1": 100,
+    "x2": 577,
+    "y2": 98,
+    "confidence": 0.8
+   },
+   {
+    "text": "3600",
+    "valueMm": 3600,
+    "x1": 577,
+    "y1": 98,
+    "x2": 800,
+    "y2": 94,
+    "confidence": 0.8
+   },
+   {
+    "text": "3600",
+    "valueMm": 3600,
+    "x1": 800,
+    "y1": 94,
+    "x2": 1030,
+    "y2": 89,
+    "confidence": 0.8
+   },
+   {
+    "text": "10500",
+    "valueMm": 10500,
+    "x1": 125,
+    "y1": 140,
+    "x2": 135,
+    "y2": 805,
+    "confidence": 0.8
+   },
+   {
+    "text": "4500",
+    "valueMm": 4500,
+    "x1": 162,
+    "y1": 140,
+    "x2": 170,
+    "y2": 425,
+    "confidence": 0.8
+   },
+   {
+    "text": "6000",
+    "valueMm": 6000,
+    "x1": 170,
+    "y1": 425,
+    "x2": 178,
+    "y2": 803,
+    "confidence": 0.8
+   }
+  ],
+  "notes": [
+   "Door leaves drawn as short straight lines with swing arcs; walls kept continuous through openings.",
+   "Window positions inferred from thin multi-line marks in external walls; approximate."
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5 (prompt 2026-11-21.1)",
+  "inputTokens": 3969,
+  "outputTokens": 3115,
+  "costUsd": 0.078176,
+  "latencyMs": 27844,
+  "at": "2026-11-21T12:11:32.993Z"
+ }
+}

@@ -36,8 +36,10 @@ const table = [
   "|---|---|---|---|---|---|---|---|---|",
   ...categories.map(
     (c) =>
-      `| ${c.name} | ${c.n} | ${f(c.wallF1)} | ${f(c.openingF1)} | ${f(c.scaleErrorPct, 1)}% | ${f(c.areaErrorPct, 1)}% | ${f(c.estimateErrorPct, 1)}% / ${f(c.estimateErrorMaxPct, 1)}% | $${f(c.costUsd, 3)} | ${f(c.latencyS, 0)} s |`,
+      `| ${c.name} | ${c.n} | ${f(c.wallF1)} | ${f(c.openingF1)} | ${Number.isFinite(c.scaleErrorPct) ? `${f(c.scaleErrorPct, 1)}%` : "not scored¹"} | ${f(c.areaErrorPct, 1)}% | ${f(c.estimateErrorPct, 1)}% / ${f(c.estimateErrorMaxPct, 1)}% | $${f(c.costUsd, 3)} | ${f(c.latencyS, 0)} s |`,
   ),
+  "",
+  "¹ The true scale of a photographed sketch isn't known exactly, so scale error is only scored on the synthetic plans; its effect still shows in the area and estimate errors.",
 ].join("\n");
 
 const readmePath = join(root, "..", "README.md");

@@ -6,10 +6,10 @@ import {
   emptyPlan,
   newId,
 } from "@oya/schema";
-import { THICKNESS, classifyWallKinds, clampOpenings, normalizePlan } from "./edit";
+import { THICKNESS, classifyWallKinds, clampOpenings, mergeNodeInto, normalizePlan } from "./edit";
 import { indexPlan, wallLength } from "./graph";
 import { topology } from "./faces";
-import { type Vec2, axisAngleDeg, dist, projectToSegment } from "./vec";
+import { type Vec2, axisAngleDeg, dist, projectToSegment, segmentIntersection } from "./vec";
 
 export interface ExtractionFlag {
   level: "info" | "warn";
@@ -142,11 +142,104 @@ function orthogonalize(plan: Plan, tolDeg: number): void {
   }
 }
 
+/** Wall ends that touch nothing else (degree-1 nodes), with the wall they belong to. */
+function freeEnds(plan: Plan) {
+  const ix = indexPlan(plan);
+  const out: { nodeId: string; wall: Wall; other: Vec2; at: Vec2 }[] = [];
+  for (const [nodeId, walls] of ix.wallsAt) {
+    if (walls.length !== 1) continue;
+    const wall = ix.walls.get(walls[0]!)!;
+    const at = ix.nodes.get(nodeId)!;
+    const other = ix.nodes.get(wall.a === nodeId ? wall.b : wall.a)!;
+    out.push({ nodeId, wall, other, at });
+  }
+  return out;
+}
+
+function lineIntersection(p1: Vec2, p2: Vec2, p3: Vec2, p4: Vec2): Vec2 | null {
+  const d = (p1.x - p2.x) * (p3.y - p4.y) - (p1.y - p2.y) * (p3.x - p4.x);
+  if (Math.abs(d) < 1e-9) return null;
+  const t = ((p1.x - p3.x) * (p3.y - p4.y) - (p1.y - p3.y) * (p3.x - p4.x)) / d;
+  return { x: p1.x + t * (p2.x - p1.x), y: p1.y + t * (p2.y - p1.y) };
+}
+
+/**
+ * Hand-drawn corners rarely meet: ends stop short or overshoot by a few hundred mm.
+ * 1. Two free ends whose wall lines cross near both ends → meet at the crossing (an L corner).
+ * 2. A free end whose wall, extended, hits another wall within `tol` → extend to it (a T).
+ * 3. Short dangling stubs left by overshoots are removed.
+ */
+export function closeCorners(input: Plan, tol = 600): Plan {
+  let plan = structuredClone(input);
+  // 1. L corners.
+  let changed = true;
+  let guard = 0;
+  while (changed && guard++ < 200) {
+    changed = false;
+    const ends = freeEnds(plan);
+    let best: { a: (typeof ends)[number]; b: (typeof ends)[number]; p: Vec2; d: number } | null = null;
+    for (let i = 0; i < ends.length; i++)
+      for (let j = i + 1; j < ends.length; j++) {
+        const a = ends[i]!;
+        const b = ends[j]!;
+        if (a.wall.id === b.wall.id) continue;
+        const p = lineIntersection(a.other, a.at, b.other, b.at);
+        if (!p) continue;
+        const d = Math.max(dist(p, a.at), dist(p, b.at));
+        if (d <= tol && (!best || d < best.d)) best = { a, b, p, d };
+      }
+    if (best) {
+      const na = plan.nodes.find((n) => n.id === best!.a.nodeId)!;
+      na.x = Math.round(best.p.x);
+      na.y = Math.round(best.p.y);
+      mergeNodeInto(plan, best.b.nodeId, best.a.nodeId);
+      changed = true;
+    }
+  }
+  // 2. T junctions by extension.
+  for (const e of freeEnds(plan)) {
+    const L = dist(e.other, e.at);
+    if (L === 0) continue;
+    const dir = { x: (e.at.x - e.other.x) / L, y: (e.at.y - e.other.y) / L };
+    const far = { x: e.at.x + dir.x * tol, y: e.at.y + dir.y * tol };
+    const ix = indexPlan(plan);
+    let hit: { p: Vec2; d: number } | null = null;
+    for (const w of plan.walls) {
+      if (w.id === e.wall.id) continue;
+      const a = ix.nodes.get(w.a)!;
+      const b = ix.nodes.get(w.b)!;
+      const x = segmentIntersection(e.at, far, a, b);
+      if (x && (!hit || x.t < hit.d)) hit = { p: x.point, d: x.t };
+    }
+    if (hit) {
+      const n = plan.nodes.find((x) => x.id === e.nodeId)!;
+      n.x = Math.round(hit.p.x);
+      n.y = Math.round(hit.p.y);
+    }
+  }
+  plan = normalizePlan(plan, 60);
+  // 3. Remove short stubs that only overshoot a junction.
+  for (let pass = 0; pass < 3; pass++) {
+    const ix = indexPlan(plan);
+    const stubs = new Set(
+      freeEnds(plan)
+        .filter((e) => (ix.wallsAt.get(e.wall.a === e.nodeId ? e.wall.b : e.wall.a)?.length ?? 0) >= 3 && wallLength(ix, e.wall) < tol)
+        .map((e) => e.wall.id),
+    );
+    if (!stubs.size) break;
+    plan.walls = plan.walls.filter((w) => !stubs.has(w.id));
+    plan.openings = plan.openings.filter((o) => !stubs.has(o.wallId));
+    plan.nodes = plan.nodes.filter((n) => plan.walls.some((w) => w.a === n.id || w.b === n.id));
+    plan = normalizePlan(plan, 60);
+  }
+  return plan;
+}
+
 const STANDARD_WIDTHS = { door: [750, 900, 1200], window: [600, 900, 1200, 1500] } as const;
 
-function pickSpec(specs: OpeningSpec[], kind: "door" | "window", widthMm: number, external: boolean): OpeningSpec | undefined {
+function pickSpec(specs: OpeningSpec[], kind: "door" | "window", widthMm: number, entrance: boolean): OpeningSpec | undefined {
   const ofKind = specs.filter((s) => s.kind === kind);
-  if (kind === "door" && external) {
+  if (kind === "door" && entrance) {
     const entrance = ofKind.find((s) => s.id.includes("entrance"));
     if (entrance) return entrance;
   }
@@ -210,6 +303,8 @@ export function postProcess(raw: RawExtraction, opts: PostProcessOptions): PostP
   // Snap distance: generous for sketches (endpoints rarely meet), capped.
   plan = normalizePlan(plan, 250);
   orthogonalize(plan, tolDeg);
+  plan = closeCorners(plan, 600);
+  orthogonalize(plan, tolDeg);
   for (const n of plan.nodes) {
     n.x = Math.round(n.x / grid) * grid;
     n.y = Math.round(n.y / grid) * grid;
@@ -234,8 +329,20 @@ export function postProcess(raw: RawExtraction, opts: PostProcessOptions): PostP
   // 4. External vs internal from the outline.
   plan = classifyWallKinds(plan);
 
-  // 5. Openings onto their nearest wall.
+  // 5. Openings onto their nearest wall. One external door (the widest) is the main entrance;
+  //    the rest are priced by width like internal doors.
   const ix = indexPlan(plan);
+  const nearestWallOf = (o: { x: number; y: number }) => {
+    const c = shift(toMm(o.x, o.y));
+    let best: { wall: Wall; d: number } | null = null;
+    for (const w of plan.walls) {
+      const d = projectToSegment(c, ix.nodes.get(w.a)!, ix.nodes.get(w.b)!).distance;
+      if (!best || d < best.d) best = { wall: w, d };
+    }
+    return best;
+  };
+  const externalDoors = raw.openings.filter((o) => o.kind === "door" && nearestWallOf(o)?.wall.kind === "external");
+  const mainEntrance = externalDoors.sort((a, b) => b.widthPx - a.widthPx || b.confidence - a.confidence)[0];
   for (const o of raw.openings) {
     const c = shift(toMm(o.x, o.y));
     let best: { wall: Wall; t: number; d: number } | null = null;
@@ -250,7 +357,7 @@ export function postProcess(raw: RawExtraction, opts: PostProcessOptions): PostP
       continue;
     }
     const widthMm = o.widthPx * mmPerPx;
-    const spec = pickSpec(opts.openingSpecs, o.kind, widthMm || STANDARD_WIDTHS[o.kind][1], best.wall.kind === "external");
+    const spec = pickSpec(opts.openingSpecs, o.kind, widthMm || STANDARD_WIDTHS[o.kind][1], o === mainEntrance);
     if (!spec) continue;
     const id = newId("o");
     plan.openings.push({

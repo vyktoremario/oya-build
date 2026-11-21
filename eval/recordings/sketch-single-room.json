@@ -1,0 +1,118 @@
+{
+ "raw": {
+  "imageWidth": 1240,
+  "imageHeight": 930,
+  "drawingType": "hand_sketch",
+  "walls": [
+   {
+    "x1": 172,
+    "y1": 149,
+    "x2": 1049,
+    "y2": 123,
+    "thicknessPx": 50,
+    "kind": "external",
+    "confidence": 0.9
+   },
+   {
+    "x1": 1049,
+    "y1": 123,
+    "x2": 1068,
+    "y2": 785,
+    "thicknessPx": 50,
+    "kind": "external",
+    "confidence": 0.9
+   },
+   {
+    "x1": 1068,
+    "y1": 785,
+    "x2": 190,
+    "y2": 806,
+    "thicknessPx": 48,
+    "kind": "external",
+    "confidence": 0.88
+   },
+   {
+    "x1": 190,
+    "y1": 806,
+    "x2": 172,
+    "y2": 149,
+    "thicknessPx": 48,
+    "kind": "external",
+    "confidence": 0.9
+   }
+  ],
+  "openings": [
+   {
+    "kind": "window",
+    "x": 612,
+    "y": 137,
+    "widthPx": 250,
+    "confidence": 0.8
+   },
+   {
+    "kind": "door",
+    "x": 628,
+    "y": 796,
+    "widthPx": 256,
+    "confidence": 0.85
+   }
+  ],
+  "rooms": [
+   {
+    "name": "Shop",
+    "x": 624,
+    "y": 456,
+    "confidence": 0.95
+   }
+  ],
+  "dimensions": [
+   {
+    "text": "4000",
+    "valueMm": 4000,
+    "x1": 165,
+    "y1": 55,
+    "x2": 1052,
+    "y2": 30,
+    "confidence": 0.75
+   },
+   {
+    "text": "4000",
+    "valueMm": 4000,
+    "x1": 170,
+    "y1": 103,
+    "x2": 1052,
+    "y2": 75,
+    "confidence": 0.75
+   },
+   {
+    "text": "3000",
+    "valueMm": 3000,
+    "x1": 78,
+    "y1": 152,
+    "x2": 95,
+    "y2": 808,
+    "confidence": 0.75
+   },
+   {
+    "text": "3000",
+    "valueMm": 3000,
+    "x1": 128,
+    "y1": 148,
+    "x2": 143,
+    "y2": 812,
+    "confidence": 0.75
+   }
+  ],
+  "notes": [
+   "Two identical 4000 and 3000 dimension strings are drawn on each side; unclear whether they refer to external or centreline sizes."
+  ]
+ },
+ "meta": {
+  "model": "claude-opus-5-5 (prompt 2026-11-21.1)",
+  "inputTokens": 3969,
+  "outputTokens": 1056,
+  "costUsd": 0.036996,
+  "latencyMs": 10116,
+  "at": "2026-11-21T12:05:38.343Z"
+ }
+}

@@ -1,0 +1,304 @@
+{
+ "raw": {
+  "imageWidth": 1240,
+  "imageHeight": 930,
+  "drawingType": "printed_plan",
+  "walls": [
+   {
+    "x1": 232,
+    "y1": 135,
+    "x2": 1007,
+    "y2": 135,
+    "thicknessPx": 13,
+    "kind": "external",
+    "confidence": 0.95
+   },
+   {
+    "x1": 232,
+    "y1": 135,
+    "x2": 232,
+    "y2": 522,
+    "thicknessPx": 13,
+    "kind": "external",
+    "confidence": 0.95
+   },
+   {
+    "x1": 232,
+    "y1": 522,
+    "x2": 697,
+    "y2": 522,
+    "thicknessPx": 13,
+    "kind": "external",
+    "confidence": 0.93
+   },
+   {
+    "x1": 1007,
+    "y1": 135,
+    "x2": 1007,
+    "y2": 793,
+    "thicknessPx": 13,
+    "kind": "external",
+    "confidence": 0.95
+   },
+   {
+    "x1": 697,
+    "y1": 522,
+    "x2": 697,
+    "y2": 793,
+    "thicknessPx": 13,
+    "kind": "external",
+    "confidence": 0.93
+   },
+   {
+    "x1": 697,
+    "y1": 793,
+    "x2": 1007,
+    "y2": 793,
+    "thicknessPx": 13,
+    "kind": "external",
+    "confidence": 0.95
+   },
+   {
+    "x1": 504,
+    "y1": 135,
+    "x2": 504,
+    "y2": 522,
+    "thicknessPx": 9,
+    "kind": "internal",
+    "confidence": 0.9
+   },
+   {
+    "x1": 697,
+    "y1": 135,
+    "x2": 697,
+    "y2": 522,
+    "thicknessPx": 9,
+    "kind": "internal",
+    "confidence": 0.9
+   },
+   {
+    "x1": 697,
+    "y1": 368,
+    "x2": 1007,
+    "y2": 368,
+    "thicknessPx": 9,
+    "kind": "internal",
+    "confidence": 0.9
+   },
+   {
+    "x1": 697,
+    "y1": 522,
+    "x2": 1007,
+    "y2": 522,
+    "thicknessPx": 9,
+    "kind": "internal",
+    "confidence": 0.9
+   },
+   {
+    "x1": 852,
+    "y1": 522,
+    "x2": 852,
+    "y2": 793,
+    "thicknessPx": 9,
+    "kind": "internal",
+    "confidence": 0.9
+   }
+  ],
+  "openings": [
+   {
+    "kind": "window",
+    "x": 368,
+    "y": 135,
+    "widthPx": 77,
+    "confidence": 0.9
+   },
+   {
+    "kind": "window",
+    "x": 600,
+    "y": 135,
+    "widthPx": 77,
+    "confidence": 0.9
+   },
+   {
+    "kind": "window",
+    "x": 852,
+    "y": 135,
+    "widthPx": 78,
+    "confidence": 0.9
+   },
+   {
+    "kind": "window",
+    "x": 232,
+    "y": 329,
+    "widthPx": 77,
+    "confidence": 0.9
+   },
+   {
+    "kind": "window",
+    "x": 1007,
+    "y": 252,
+    "widthPx": 78,
+    "confidence": 0.9
+   },
+   {
+    "kind": "window",
+    "x": 1007,
+    "y": 658,
+    "widthPx": 39,
+    "confidence": 0.88
+   },
+   {
+    "kind": "window",
+    "x": 775,
+    "y": 793,
+    "widthPx": 77,
+    "confidence": 0.9
+   },
+   {
+    "kind": "door",
+    "x": 368,
+    "y": 522,
+    "widthPx": 77,
+    "confidence": 0.9
+   },
+   {
+    "kind": "door",
+    "x": 504,
+    "y": 329,
+    "widthPx": 58,
+    "confidence": 0.88
+   },
+   {
+    "kind": "door",
+    "x": 697,
+    "y": 445,
+    "widthPx": 60,
+    "confidence": 0.88
+   },
+   {
+    "kind": "door",
+    "x": 775,
+    "y": 368,
+    "widthPx": 60,
+    "confidence": 0.88
+   },
+   {
+    "kind": "door",
+    "x": 775,
+    "y": 522,
+    "widthPx": 60,
+    "confidence": 0.88
+   },
+   {
+    "kind": "door",
+    "x": 852,
+    "y": 658,
+    "widthPx": 50,
+    "confidence": 0.87
+   }
+  ],
+  "rooms": [
+   {
+    "name": "Living Room",
+    "x": 368,
+    "y": 323,
+    "confidence": 0.95
+   },
+   {
+    "name": "Dining",
+    "x": 600,
+    "y": 323,
+    "confidence": 0.95
+   },
+   {
+    "name": "Bedroom 1",
+    "x": 851,
+    "y": 246,
+    "confidence": 0.95
+   },
+   {
+    "name": "Passage",
+    "x": 852,
+    "y": 440,
+    "confidence": 0.95
+   },
+   {
+    "name": "Bedroom 2",
+    "x": 775,
+    "y": 653,
+    "confidence": 0.95
+   },
+   {
+    "name": "Bath",
+    "x": 929,
+    "y": 653,
+    "confidence": 0.95
+   }
+  ],
+  "dimensions": [
+   {
+    "text": "12000",
+    "valueMm": 12000,
+    "x1": 232,
+    "y1": 41,
+    "x2": 1007,
+    "y2": 41,
+    "confidence": 0.93
+   },
+   {
+    "text": "4200",
+    "valueMm": 4200,
+    "x1": 232,
+    "y1": 90,
+    "x2": 504,
+    "y2": 90,
+    "confidence": 0.92
+   },
+   {
+    "text": "3000",
+    "valueMm": 3000,
+    "x1": 504,
+    "y1": 90,
+    "x2": 697,
+    "y2": 90,
+    "confidence": 0.92
+   },
+   {
+    "text": "4800",
+    "valueMm": 4800,
+    "x1": 697,
+    "y1": 90,
+    "x2": 1007,
+    "y2": 90,
+    "confidence": 0.92
+   },
+   {
+    "text": "6000",
+    "valueMm": 6000,
+    "x1": 186,
+    "y1": 135,
+    "x2": 186,
+    "y2": 522,
+    "confidence": 0.92
+   },
+   {
+    "text": "10200",
+    "valueMm": 10200,
+    "x1": 137,
+    "y1": 135,
+    "x2": 137,
+    "y2": 793,
+    "confidence": 0.92
+   }
+  ],
+  "notes": []
+ },
+ "meta": {
+  "model": "claude-opus-5-5 (prompt 2026-11-21.1)",
+  "inputTokens": 3969,
+  "outputTokens": 2230,
+  "costUsd": 0.060476,
+  "latencyMs": 17497,
+  "at": "2026-11-21T12:02:45.138Z"
+ }
+}

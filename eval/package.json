@@ -6,7 +6,9 @@
     "typecheck": "tsc -p .",
     "generate": "tsx src/generate.ts",
     "eval": "tsx src/run.ts",
-    "report": "tsx src/report.ts"
+    "report": "tsx src/report.ts",
+    "generate:local": "tsx src/generate-local.ts",
+    "record:sample": "tsx src/record-sample.ts"
   },
   "dependencies": {
     "@oya/estimate": "workspace:*",

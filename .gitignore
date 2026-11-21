@@ -8,3 +8,7 @@ coverage
 playwright-report
 test-results
 .DS_Store
+.env*
+
+# Real sketches without redistribution rights: scored locally, not committed
+eval/cases-local/

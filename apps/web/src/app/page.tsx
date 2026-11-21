@@ -5,10 +5,10 @@ import evalSummary from "@/samples/eval-summary.json";
 interface Summary {
   ranAt: string;
   model: string;
-  categories: { name: string; n: number; wallF1: number; openingF1: number; scaleErrorPct: number; areaErrorPct: number; estimateErrorPct: number; costUsd: number; latencyS: number }[];
+  categories: { name: string; n: number; wallF1: number; openingF1: number; scaleErrorPct: number | null; areaErrorPct: number; estimateErrorPct: number; costUsd: number; latencyS: number }[];
 }
 
-const pct = (x: number) => `${x.toFixed(0)}%`;
+const pct = (x: number | null) => (x === null || !Number.isFinite(x) ? "–" : `${x.toFixed(1)}%`);
 
 export default function Home() {
   const summary = evalSummary as Summary | null;
