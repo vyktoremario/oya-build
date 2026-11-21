@@ -51,7 +51,7 @@ export const DEFAULT_PARAMS: Params = {
     roofing: 0.1,
     timber: 0.1,
     dpm: 0.15,
-    fill: 0.1,
+    fill: 0.25,
     ceiling: 0.05,
   },
   labourPercent: 0,
@@ -92,5 +92,6 @@ export const PARAM_DOCS: Record<ParamKey, { label: string; unit: string; why: st
   rafterSpacing: { label: "Rafter spacing", unit: "mm", why: "Rafters (2\"×4\") at 600 mm centres." },
   purlinSpacing: { label: "Purlin spacing", unit: "mm", why: "Purlins (2\"×3\") at 900 mm centres." },
   roofBracingAllowance: { label: "Bracing allowance", unit: "fraction", why: "Rule of thumb: struts, ties and king posts ≈ 30% of rafter length." },
+  // waste.fill includes ~15% compaction of laterite on top of 10% handling loss.
   labourPercent: { label: "Labour allowance", unit: "%", why: "Off by default: labour varies widely. Add your contractor's figure." },
 };

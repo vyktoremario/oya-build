@@ -1,8 +1,11 @@
 {
   "name": "oya-build",
   "private": true,
+  "type": "module",
   "packageManager": "pnpm@10.14.0",
-  "engines": { "node": ">=22" },
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
     "dev": "pnpm --filter web dev",
     "build": "pnpm --filter web build",

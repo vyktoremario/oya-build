@@ -3,7 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "type": "module",
-  "exports": { ".": "./src/index.ts" },
-  "scripts": { "typecheck": "tsc -p ." },
-  "dependencies": { "@oya/schema": "workspace:*", "@oya/geometry": "workspace:*" }
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p ."
+  },
+  "dependencies": {
+    "@oya/schema": "workspace:*",
+    "@oya/geometry": "workspace:*"
+  },
+  "devDependencies": {}
 }
