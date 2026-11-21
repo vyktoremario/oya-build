@@ -18,6 +18,12 @@ const ratelimit = redis ? new Ratelimit({ redis, limiter: Ratelimit.slidingWindo
 const memoryHits = new Map<string, number[]>();
 const memorySpend = new Map<string, number>();
 
+/**
+ * On Vercel each serverless instance has its own memory, so an in-memory spend counter can't enforce
+ * a daily cap. In production the app's own key is only used when Redis is configured.
+ */
+export const appKeyAllowed = () => Boolean(redis) || process.env.NODE_ENV !== "production";
+
 const dayKey = () => `oya:spend:${new Date().toISOString().slice(0, 10)}`;
 
 export async function checkRateLimit(ip: string): Promise<boolean> {

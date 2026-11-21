@@ -1,6 +1,6 @@
 import { z } from "zod";
 import { ExtractionError, extractRaw } from "@oya/extract";
-import { DAILY_CAP_USD, checkRateLimit, recordSpend, spentToday } from "@/server/limits";
+import { DAILY_CAP_USD, appKeyAllowed, checkRateLimit, recordSpend, spentToday } from "@/server/limits";
 
 export const maxDuration = 180;
 
@@ -27,7 +27,7 @@ export async function POST(req: Request) {
   const byok = Boolean(body.apiKey);
 
   if (!byok) {
-    if (!process.env.ANTHROPIC_API_KEY) return json(503, "no_key", "Live extraction isn't configured on this deployment. Try the sample, or use your own API key.");
+    if (!process.env.ANTHROPIC_API_KEY || !appKeyAllowed()) return json(503, "no_key", "Live extraction isn't configured on this deployment. Try the sample, or use your own API key.");
     const ip = req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || "local";
     if (!(await checkRateLimit(ip))) return json(429, "rate_limited", "You've hit the hourly limit for live extractions. Try again later, or use your own API key.");
     if ((await spentToday()) >= DAILY_CAP_USD) return json(429, "budget", "Today's free extraction budget is used up. Try the sample, or use your own API key.");
